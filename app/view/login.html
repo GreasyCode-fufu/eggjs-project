@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/loginstyle.css">
+</head>
+<body>
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img src="../public/img/leaf.jpg" class="img-fluid" width="450px" height="600px">
+                </div>
+                <div class="col-lg-7 px-5 pt-5">
+                    <h1 class="font-weight-bold py-3">牧野一号</h1>
+                    <h5>请登录您的账户</h5>
+                    <form action="/success" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="email" placeholder="邮箱" class="form-control my-3 p-4" name="useremail">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="password" placeholder="密码" class="form-control my-3 p-4" name="userpassword">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn1 mt-3 mb-5">登录</button>
+                            </div>
+                        </div>
+                        <a href="/forget">忘记密码？</a>
+                        <p>还没有账户？<a href="/register">点击注册</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../public/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

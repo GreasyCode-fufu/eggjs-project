@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/registerStyle.css">
+    <link rel="stylesheet" type="text/css" href="../public/font-awesome/css/font-awesome.min.css">
+    <title>注册页面</title>
+</head>
+<body>
+    <section class="main py-5">
+        <div class="container py-5">
+            <div class="row py-5">
+                <div class="col-lg-5 offset-1 col-md-11 col-sm-11 col-11 text-white">
+                    <div class="row py-1">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                            <span style="font-size:35px; color:white"><i class="fa fa-umbrella fa-2x" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                            <h3 class="font-weight-light">安全保障您的资金</h3>
+                            <p class="font-weight-light pb-5">平台实时扫描支付环境，实时确保您的资金安全！</p>
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                            <span style="font-size:35px; color:white"><i class="fa fa-user-secret fa-2x" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                            <h3 class="font-weight-light">加密您的信息</h3>
+                            <p class="font-weight-light pb-5">在您浏览过程中，我们建立强大的信息隐藏后盾，时刻保护您！</p>
+                        </div>
+                    </div>
+                    <div class="row py-1">
+                        <div class="col-lg-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                            <span style="font-size:35px; color:white"><i class="fa fa-suitcase fa-2x" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+                            <h3 class="font-weight-light">严谨工作态度</h3>
+                            <p class="font-weight-light pb-5">工作一丝不苟，为您带来极致体验！</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <form method="POST"> -->
+                <form class="col-lg-5 offset-1 col-md-11 col-sm-11 col-11" action="/register" method="POST">
+                    <div class="card py-3 px-3">
+                        <div class="card-body text-center">
+                            <h2 class="font-weight-light">注册</h2>
+                            <div class="form">
+                                <span class="inputPadding"><h2>{{sql}}</h2></span>
+                                <span class="inputPadding"><input type="text" class="form-control py-3" placeholder="邮箱" name="useremail"></span>
+                                <span class="inputPadding"><input type="text" class="form-control py-3" placeholder="密码" name="userpassword"></span>
+                                <span class="inputPadding"><input type="text" class="form-control py-3" placeholder="确认密码" name="verify"></span>
+                                <span class="inputPadding"><input type="text" class="form-control py-3" placeholder="电话号码" name="telephone"></span>
+                                <button class="btn btn-dark btn-sm my-3 px-5 form-control">注册</button>
+                                <p>已有账户？<a href="/login">登录</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- </form>> -->
+            </div>
+        </div>
+    </section>
+    <script src="../public/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

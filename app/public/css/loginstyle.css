@@ -1,0 +1,57 @@
+@font-face{
+    font-family:MasaFont-Regular;
+    src:url(../font/MasaFont-Regular.ttf);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:rgb(219,226,226);
+    overflow:hidden;
+}
+
+.row{
+    background: white;
+    border-radius: 30px;
+    box-shadow: 12px 12px 22px grey;
+}
+
+img{
+    border-top-left-radius:30px;
+    border-bottom-left-radius:30px;
+}
+
+.btn1{
+    border:none;
+    outline:none;
+    height:50px;
+    width:100%;
+    background-color: black;
+    color:white;
+    border-radius:4px;
+    font-weight:bold; 
+}
+
+.btn1:hover{
+    background:white;
+    color:black;
+}
+
+.btn:active{
+    background:black;
+    color:white;
+}
+
+
+h1{
+    font-family: MasaFont-Regular;
+    font-size:60px;
+}
+
+a:active{
+    color:#f9ca24;
+}

@@ -1,0 +1,52 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+              <div class="card">
+                <div class="card-body">
+                  <table class="table table-hover table-striped">
+                    
+                    <br />
+                    <thead class="blue-grey lighten-4" style="text-align:center">
+                      <tr >
+                        <th>序号</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align:center">
+                      {% for item in sql %}
+                      <tr>
+                        <th scope="row">{{item.userid}}</th>
+                        <td>{{item.useremail}}</td>
+                        <td>{{item.telephone}}</td>
+                        <td><a href="/backstage/input" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" id="delete" >删 除</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                    
+                  </table>
+                  
+                </div>
+            </div>
+
+            <div class="modal modal" id="modal-id">
+              <div class="modal-container">
+                <div class="modal-header">
+                  <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
+                  <div class="modal-title h5">注意</div>
+                </div>
+                <div class="modal-body">
+                  <div class="content">
+                    确定删除该用户吗？
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a class="btn btn-sm btn-error" href="/deleteuser">确定</a>
+                  <button class="btn btn-link btn-sm" id="cancal">取消</button>
+                </div>
+              </div>
+            </div>
+         
+{% endblock %}

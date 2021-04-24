@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="../public/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/loginstyle.css">
+</head>
+<body>
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img src="../public/img/papers.jpg" class="img-fluid" width="450px" height="600px">
+                </div>
+                <div class="col-lg-7 px-5 pt-5">
+                    <!-- <h1 class="font-weight-bold py-3">确认用户</h1> -->
+                    <h2>确认用户</h2>
+                    <br/>
+                    <form action="/reset" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="email" placeholder="邮箱" class="form-control my-3 p-4" name="useremail">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <input type="text" placeholder="手机号码" class="form-control my-3 p-4" name="telephone">
+                            </div>
+                        </div>
+                        <!-- <h3 style="color:white; font-weight: bold; background-color: black; border-radius: 30px;">{{sql}}</h3> -->
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <h2>{{sql}}</h2>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="col-lg-7">
+                                <button type="submit" class="btn1 mt-3 mb-5">确定</button>
+                            </div>
+                        </div>
+                        <p>已有账户？<a href="/login">点击登录</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../public/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

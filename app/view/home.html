@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/homestyle.css">
+    <link rel="stylesheet" href="../public/css/alert.css">
+    <script src="../public/js/alert.js"></script>
+    <script></script>
+    <title>主页</title>
+</head>
+<body>
+    <section class="showcase">
+        <header>
+            <div class="logo">
+                <p>播放音乐</p>
+                <img src="../public/img/stop.png" id="icon">
+            </div>
+            <!-- <h2 class="logo">牧野一号</h2> -->
+            <div class="toggle"></div>
+        </header>
+        <video src="../public/video/town.mp4" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="text">
+            <h2>工匠精神</h2>
+            <h3>敬业、精益、专注、创新</h3>
+            <p>工匠们喜欢不断雕琢自己的产品，不断改善自己的工艺，享受着产品在双手中升华的过程。</p>
+            <button id="btn"><a>前进</a></button>
+        </div>
+
+    </section>
+    <div class="menu">
+        <ul>
+            <li><a href="/sea">主页</a></li>
+            <li><a href="/introduce">介绍</a></li>
+            <li><a href="/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+        </ul>
+    </div>
+
+    <div id="app">
+        <p>请先登录！</p>
+    </div>
+    <audio id="mySong">
+        <source src="../public/audio/melancholy.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        var mySong = document.getElementById("mySong");
+        var icon = document.getElementById("icon");
+    
+        icon.onclick = function() {
+            if(mySong.paused){
+                mySong.play();
+                icon.src = "../public/img/play.png";
+            }else{
+                mySong.pause();
+                icon.src = "../public/img/stop.png";
+            }
+        }
+    </script>
+</body>
+</html>

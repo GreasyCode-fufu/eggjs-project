@@ -1,0 +1,92 @@
+
+:root{
+    --overlay-color:#03a9f4;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.showcase{
+    position:absolute;
+    right:0;
+    width:100%;
+    min-height:100vh;
+    padding: 100px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background: #111;
+    color: #fff;
+    z-index: 2;
+    transition:0.5s
+}
+
+
+.showcase header{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.showcase video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: #03a9f4; */
+    /* mix-blend-mode: overlay; */
+}
+
+.text{
+    position: relative;
+    z-index: 10;
+}
+
+.text h3{
+    font-size:4rem;
+    font-weight:800;
+    line-height: 1em;
+    text-transform: uppercase;
+}
+
+.text h4 a{
+    font-size:3.5rem;
+    font-weight:700;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+}
+
+.text p{
+    font-size: 1.1em;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
+}
+
