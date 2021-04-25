@@ -8,7 +8,7 @@ class SuccessController extends Controller {
     const{ctx} = this;
 
     // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-    let passwordHelper = new PasswordHelper();
+    // let passwordHelper = new PasswordHelper();
     // let hashedPassword = await passwordHelper.hash('Hello World!');
     // let verifyResult = await passwordHelper.verify('Hello World!', hashedPassword);
     // console.log("验证结果为：" + verifyResult);
