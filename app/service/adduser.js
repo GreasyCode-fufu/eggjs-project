@@ -20,7 +20,7 @@ class AdduserService extends Service {
     console.log(verify);
     console.log(telephone);
 
-    if(userpassword === verify){
+    if(verify){
         let result = await this.app.mysql.insert("register",{
             useremail:useremail,
             userpassword:userpassword,

@@ -1,19 +1,20 @@
 'use strict';
 
 const Service = require('egg').Service;
+const PasswordHelper = require('../controller/password2');
 
 class HomeService extends Service {
   async index(useremail, userpassword) {
-    console.log({useremail, userpassword})
 
-   let value =  await this.app.mysql.get('register', {
-        useremail:useremail,
-        userpassword:userpassword,
+    let passwordHelper = new PasswordHelper();
+    let value =  await this.app.mysql.get('register', {
+        useremail:useremail
     })
+   
+    let verifyResult = await passwordHelper.verify(userpassword, value.userpassword);
+    console.log("验证结果为：" + verifyResult);
 
-    console.log(value);
-
-    if (value){
+    if (value && verifyResult){
         return value;
     }else{
         return "没有找到";
@@ -45,13 +46,6 @@ class HomeService extends Service {
 
     console.log("-----------------删除成功-----------")
     return "删除成功";
-    // console.log(value);
-
-    // if (value){
-    //     return value;
-    // }else{
-    //     return "没有找到";
-    // }
     
   }
 
