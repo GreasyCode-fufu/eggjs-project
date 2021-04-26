@@ -49,6 +49,22 @@ class HomeService extends Service {
     
   }
 
+  async addAdminPassword(addAdminPassword){
+    console.log(addAdminPassword);
+    let passwordHelper = new PasswordHelper();
+    let adminHashedPassword = await passwordHelper.hash(addAdminPassword);
+    if(addAminPassword){
+      let result = await this.app.mysql.insert("admin",{
+        adminPassword: adminHashedPassword
+    });
+    return true;
+    }else{
+      return false;
+    }
+
+
+  }
+
 
 
 }

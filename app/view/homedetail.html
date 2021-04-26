@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="../public/css/mdb.min.css" />
     <!-- Custom styles -->
     <link rel="stylesheet" href="../public/css/style.css" />
+    <link rel="stylesheet" href="../public/css/spectre.min.css">
+    <link rel="stylesheet" href="../public/css/spectre-exp.min.css">
+    <link rel="stylesheet" href="../public/css/spectre-icons.min.css">
 </head>
 <body>
       <!--Main Navigation-->
@@ -283,6 +286,29 @@
         </div>
       </section>
       <!--Section: Content-->
+
+      <div class="modal modal-sm" id="modal-id" style="margin: auto;">
+        <div class="modal-container">
+          <form >
+            <div class="modal-header">
+              <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
+              <div class="modal-title h5">权限确认</div>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label" for="input-example-1" style="font-size:20px">管理员密码</label>
+                <input class="form-input" type="text" id="input-example-1" placeholder="密码">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-sm btn-error" href="/deleteuser">确定</a>
+              <button class="btn btn-link btn-sm" id="cancal">取消</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
     </div>
   </main>
   <!--Main layout-->
@@ -297,7 +323,7 @@
       © 2021 Copyright:
       <a class="text-dark" href="#">智慧应用开发</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a class="text-dark" href="/backstage">数据管理</a>
+      <a class="text-dark" id="access">数据管理</a>
     </div>
 
   </footer>
@@ -306,5 +332,22 @@
     <script type="text/javascript" src="../public/js/mdb.min.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript" src="../public/js/script.js"></script>
+
+    <script>
+      let value = document.getElementById('access');
+      let modal = document.getElementById('modal-id');
+      let remove = document.getElementById('remove');
+      let cancal = document.getElementById('cancal');
+      value.addEventListener('click' ,() => {
+          modal.classList.add('active');
+      });
+      remove.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+      cancal.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+  
+    </script>
 </body>
 </html>

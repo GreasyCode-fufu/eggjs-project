@@ -32,6 +32,12 @@ class HomeController extends Controller {
     const {ctx}=this;
     await ctx.render('poem');
   }
+
+  async senior(){
+    const {ctx}=this;
+    let sql=await this.ctx.service.selectAdmin.adminTable();
+    await ctx.render('showAdmin',{sql});
+  }
 }
 
 module.exports = HomeController;

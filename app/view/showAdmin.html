@@ -1,0 +1,42 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+<div class="card">
+    <div class="card-body">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="/addAdmin">添加管理员</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="#">管理员数据</a>
+        </li>
+      </ul>
+      <table class="table table-hover table-striped">
+        
+        <br />
+        <thead class="blue-grey lighten-4" style="text-align:center">
+          <tr >
+            <th>序号</th>
+            <th>管理员</th>
+            <th>创建时间</th>
+            <!-- <th>操作</th> -->
+          </tr>
+        </thead>
+        <tbody style="text-align:center">
+          {% for item in sql %}
+          <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.adminName}}</td>
+            <td>{{item.submission_date}}</td>
+            <!-- <td><a href="/backstage/input" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<button style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" id="delete" >删 除</button></td> -->
+          </tr>
+          {% endfor %}
+        </tbody>
+        
+      </table>
+
+{% endblock %}

@@ -24,4 +24,7 @@ module.exports = app => {
   router.get('/dataVisual', controller.dataVisual.dataBar);
   router.get('/homedetail', controller.home.homedetail);
   router.get('/poem', controller.home.poem);
+  router.get('/senior', controller.home.senior);
+  router.get('/addAdmin', controller.addAdmin.index);
+  router.post('/addAdmin', controller.addAdmin.index);
 };
