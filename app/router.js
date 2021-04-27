@@ -8,6 +8,7 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/login', controller.home.login);
   router.get('/sea', controller.home.sea);
+  router.get('/fails', controller.home.fails);
   router.post('/success', controller.success.index);
   router.get('/introduce', controller.home.introduce);
   router.get('/forget', controller.forget.index);

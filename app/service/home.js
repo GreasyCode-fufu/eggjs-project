@@ -49,15 +49,17 @@ class HomeService extends Service {
     
   }
 
-  async addAdminPassword(addAdminPassword){
+  async addAdminPassword(adminName, addAdminPassword, submission_date){
     console.log(addAdminPassword);
     let passwordHelper = new PasswordHelper();
     let adminHashedPassword = await passwordHelper.hash(addAdminPassword);
-    if(addAminPassword){
+    if(addAdminPassword){
       let result = await this.app.mysql.insert("admin",{
-        adminPassword: adminHashedPassword
+        adminName: adminName,
+        adminPassword: adminHashedPassword,
+        submission_date: submission_date
     });
-    return true;
+    return result;
     }else{
       return false;
     }

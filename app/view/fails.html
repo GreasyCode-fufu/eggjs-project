@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>登录失败！</p>
-</body>
-</html>
+{% extends "backstage.html" %}
+
+{% block table %}
+    <span class="h1">提交失败，请重试!</span>
+    <img src="../public/img/fails.png"></img>
+    <!-- <span class="h1">提交失败，请重试!</span> -->
+
+{% endblock %}

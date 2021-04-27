@@ -8,6 +8,11 @@ class HomeController extends Controller {
     await ctx.render('home');
   }
 
+  async fails() {
+    const { ctx } = this;
+    await ctx.render('fails');
+  }
+
   async introduce() {
     const { ctx } = this;
     await ctx.render('food');
