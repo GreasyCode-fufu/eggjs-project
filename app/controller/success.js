@@ -25,7 +25,7 @@ class SuccessController extends Controller {
     console.log('----------------------');
     console.log(service);
     if(service === "没有找到"){
-        await ctx.render('fails')
+        await ctx.render('error')
     }else{
         await ctx.render('food');
     }

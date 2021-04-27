@@ -8,18 +8,17 @@ class HomeService extends Service {
 
     let passwordHelper = new PasswordHelper();
     let value =  await this.app.mysql.get('register', {
-        useremail:useremail
+        useremail:useremail,
     })
-   
+   console.log(value.userpassword);
     let verifyResult = await passwordHelper.verify(userpassword, value.userpassword);
-    console.log("验证结果为：" + verifyResult);
+    console.log("验证结果为：+++++++++++++++++++++++++=" + verifyResult);
 
     if (value && verifyResult){
         return value;
     }else{
         return "没有找到";
     }
-    
   }
 
   async confirm(userpassword) {
@@ -63,12 +62,7 @@ class HomeService extends Service {
     }else{
       return false;
     }
-
-
   }
-
-
-
 }
 
 module.exports = HomeService;

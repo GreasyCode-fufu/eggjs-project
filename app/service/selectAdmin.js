@@ -6,7 +6,7 @@ const Service = require('egg').Service;
 class SelectAdminService extends Service {
   async adminTable() {
     let sql = await this.app.mysql.select('admin');
-    for(let i=0; i<sql.length; i++){
+    for(let i=0; i<sql.length; i++){     //转换日期格式
       console.log('转换前的数据为：');
       console.log(sql[i].submission_date);
 
@@ -17,12 +17,7 @@ class SelectAdminService extends Service {
       let d = date.getDate()
       d = d < 10 ? ('0' + d) : d
       const time =  y + '-' + m + '-' + d;
-      // ...
-      // let time='转换后的数据'
       sql[i].submission_date = time;
-
-      console.log('转换后的数据为：');
-      console.log(sql[i].submission_date);
     }
     return sql;
   }

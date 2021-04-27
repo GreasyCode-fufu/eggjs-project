@@ -10,7 +10,7 @@ class HomeController extends Controller {
 
   async fails() {
     const { ctx } = this;
-    await ctx.render('fails');
+    await ctx.render('error');
   }
 
   async introduce() {

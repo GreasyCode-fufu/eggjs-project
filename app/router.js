@@ -28,4 +28,5 @@ module.exports = app => {
   router.get('/senior', controller.home.senior);
   router.get('/getaddAdmin', controller.addAdmin.getaddAdmin);
   router.post('/addAdmin', controller.addAdmin.index);
+  router.post('/verifyAdmin', controller.verifyAdmin.index);
 };

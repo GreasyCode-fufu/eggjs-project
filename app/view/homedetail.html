@@ -44,7 +44,7 @@
       }
 
       .carousel-item:nth-child(3) {
-        background-image: url('../public/img/145\ \(8\).jpg');
+        background-image: url('../public/img/spider.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -197,7 +197,7 @@
               <div class="card-body">
                 <h5 class="card-title">环保业务</h5>
                 <p class="card-text">
-                  随着我国工业化、城镇化进程加快，全国三分之二的大中城市受到“垃圾围城”困扰。
+                  随着我国工业化进程加快，全国三分之二的大中城市受到“垃圾围城”困扰。
                   目前，牧野一号水泥运行和在建的环保工厂年处置废弃物能力超过550万吨。
                 </p>
                 <!-- <a href="#!" class="btn btn-primary">Button</a> -->
@@ -289,19 +289,21 @@
 
       <div class="modal modal-sm" id="modal-id" style="margin: auto;">
         <div class="modal-container">
-          <form >
+          <form action="/verifyAdmin" method="post">
             <div class="modal-header">
               <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
               <div class="modal-title h5">权限确认</div>
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label class="form-label" for="input-example-1" style="font-size:20px">管理员密码</label>
-                <input class="form-input" type="text" id="input-example-1" placeholder="密码">
+                <label class="form-label" for="input-example-1" style="font-size:20px">管理员</label>
+                <input class="form-input" type="text" id="input-example-1" placeholder="姓名" name="adminName">
+                <label class="form-label" for="input-example-1" style="font-size:20px">密码</label>
+                <input class="form-input" type="text" id="input-example-1" placeholder="密码" name="adminPassword">
               </div>
             </div>
             <div class="modal-footer">
-              <a class="btn btn-sm btn-error" href="/deleteuser">确定</a>
+              <button class="btn btn-sm btn-primary">确定</button>
               <button class="btn btn-link btn-sm" id="cancal">取消</button>
             </div>
           </form>
