@@ -10,10 +10,7 @@ class HomeService extends Service {
     let value =  await this.app.mysql.get('register', {
         useremail:useremail,
     })
-   console.log(value.userpassword);
     let verifyResult = await passwordHelper.verify(userpassword, value.userpassword);
-    console.log("验证结果为：+++++++++++++++++++++++++=" + verifyResult);
-
     if (value && verifyResult){
         return value;
     }else{
@@ -28,9 +25,6 @@ class HomeService extends Service {
         userpassword:userpassword,
     })
 
-    console.log("-----------------确认密码mysql传入数据-----------")
-    console.log(value);
-
     if (value){
         return value;
     }else{
@@ -40,16 +34,12 @@ class HomeService extends Service {
   }
 
   async deleteuser(useremail) {
-    console.log({useremail});
     await this.app.mysql.query('delete from register where useremail = ?',[useremail]);
-
-    console.log("-----------------删除成功-----------")
     return "删除成功";
     
   }
 
   async addAdminPassword(adminName, addAdminPassword, submission_date){
-    console.log(addAdminPassword);
     let passwordHelper = new PasswordHelper();
     let adminHashedPassword = await passwordHelper.hash(addAdminPassword);
     if(addAdminPassword){

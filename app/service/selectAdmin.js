@@ -7,9 +7,6 @@ class SelectAdminService extends Service {
   async adminTable() {
     let sql = await this.app.mysql.select('admin');
     for(let i=0; i<sql.length; i++){     //转换日期格式
-      console.log('转换前的数据为：');
-      console.log(sql[i].submission_date);
-
       let date = new Date(sql[i].submission_date)
       let y = date.getFullYear()
       let m = date.getMonth() + 1

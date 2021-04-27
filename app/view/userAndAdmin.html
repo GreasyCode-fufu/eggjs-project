@@ -1,0 +1,22 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+              <table class="charts-css column show-heading show-labels show-primary-axis show-3-secondary-axes data-spacing-20" style="width: 36rem; height:25rem; font-weight:bold">
+
+                <caption style="font-size:40px; line-height: 7rem;"> 用户与管理员人数 </caption>
+              
+                <tbody>
+                      <tr>
+                        <th scope="row"> 用户 </th>
+                        <td style="--size: calc( {{count.count1}} / 10);"> {{count.count1}}人</td>
+                      </tr>
+                       <tr>
+                        <th scope="row"> 管理员 </th>
+                        <td style="--size: calc( {{count.count2}} / 10 )"> {{count.count2}}人 </td>
+                      </tr>
+                </tbody>
+              
+              </table>
+
+{% endblock %}

@@ -13,8 +13,6 @@ class AddAdminController extends Controller {
         let adminName = ctx.request.body.adminName;
         let adminPassword = ctx.request.body.adminPassword;
         let submission_date = ctx.request.body.submission_date;
-      //   console.log(adminPassword);
-      //   console.log(submission_date);
         let service = await this.ctx.service.home.addAdminPassword(adminName, adminPassword, submission_date);
         let sql=await this.ctx.service.selectAdmin.adminTable();
         if(service){

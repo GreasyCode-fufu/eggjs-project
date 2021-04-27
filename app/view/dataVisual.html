@@ -1,7 +1,7 @@
 {% extends "backstage.html" %}
 
 {% block table %}
-          <div style="height: 400px">
+          <!-- <div style="height: 400px">
             <table class="charts-css column hide-data test show-heading">
 
                 <caption> 薪酬变化 </caption>
@@ -25,5 +25,23 @@
                 </tbody>
               
               </table> 
+          </div> -->
+          <ul class="tab tab-block">
+            <li class="tab-item active">
+              <a href="#">首页</a>
+            </li>
+            <li class="tab-item">
+              <a href="/userAndAdmin">用户与管理员</a>
+            </li>
+            <li class="tab-item">
+              <a href="#">Radio</a>
+            </li>
+            <li class="tab-item">
+              <a href="#">Connect</a>
+            </li>
+          </ul>
+          <div class="main">
+          <img src="../public/img/data.png"></img>
           </div>
+
 {% endblock %}
