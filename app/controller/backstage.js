@@ -5,7 +5,7 @@ const Controller = require('egg').Controller;
 class BackstageController extends Controller {
   async index() {
     const {ctx}=this;
-    await ctx.render('backstage');
+    await ctx.render('indexbackstage');
   }
 
   async input() {

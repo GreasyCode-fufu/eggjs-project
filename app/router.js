@@ -16,7 +16,7 @@ module.exports = app => {
   router.post('/register', controller.register.adduser);
   router.post('/resetpassword', controller.resetpassword.index);
   router.get('/usertable', controller.usertable.usertable);
-  router.get('/backstage', controller.backstage.index);
+  router.get('/indexbackstage', controller.backstage.index);
   router.get('/deleteuser', controller.deleteuser.deleteuser);
   router.get('/backstage/input', controller.backstage.input);
   router.post('/usertable', controller.usertable.confirm);
@@ -25,6 +25,6 @@ module.exports = app => {
   router.get('/homedetail', controller.home.homedetail);
   router.get('/poem', controller.home.poem);
   router.get('/senior', controller.home.senior);
-  router.get('/addAdmin', controller.addAdmin.index);
+  router.get('/getaddAdmin', controller.addAdmin.getaddAdmin);
   router.post('/addAdmin', controller.addAdmin.index);
 };
