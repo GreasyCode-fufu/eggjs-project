@@ -28,7 +28,7 @@ class RegisterController extends Controller {
     // console.log(hashedPasswordVerify)
     console.log(telephone);
 
-    let sql=await this.ctx.service.adduser.index(useremail, hashedPassword, verifyResult, telephone);
+    let sql =await this.ctx.service.adduser.index(useremail, hashedPassword, verifyResult, telephone);
 
     if(sql === "注册成功，请登录！"){
       await ctx.render('register',{sql});

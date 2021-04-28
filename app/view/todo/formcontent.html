@@ -2,66 +2,50 @@
       <form method='post'>
         <div class="d-flex justify-content-around bg-light">
           <article>
-            <div class="form-floating">
-                <h6>标题：</h6>
-                <input type="text" class="form-control"  name="title" value="{{ todo.title }}">
-            </div>
-            <div class="container">
-              <!-- {# <form> #} -->
-                <h6>文本内容：</h6>
-                <textarea name="text" id="mytextarea">{{todo.text | safe }}</textarea>
-              <!-- {# </form> #} -->
-            </div>
-            <div class="d-grid gap-2">
-              <button class="btn btn-dark" type="submit" onclick = "return save()" onclick="myFunction()">保存</button>
-            </div>
-          </article>
-          <aside>
-            <div class="form-floating">
-                <h6>作者：</h6> 
-                <input type="text" class="form-control" trxtarea name="biaoqian" value="{{ todo.biaoqian }}">
-            </div>
-            <!-- {# <div class="input-group-lg my-3">
-              <label class="form-label">标签：</label>
-              <ul class="tags list-unstyled"></ul>
-              <div class="d-flex">
-                  <input type="text" name="tag-input" class="form-control">
-                  <button type="button" name="button" class="btn btn-primary ms-3 flex-grow-0 flex-shrink-0 tag-add" >添加</button>
-              </div>
-              <div class="form-text">仅限1~64个字符</div>
-            </div> #} -->
-           
-            <div class="form-floating">
-              <h6>简介（请输入1~500个中文汉字）</h6>
-              <textarea name="zhaiyao" class="form-control" placeholder="简介" id="zhaiyaoTextarea" style="height:20rem">{{todo.zhaiyao}}</textarea>
-            </div>
-        
-            <!-- {# <form action="/upload?_csrf={{ ctx.csrf | safe}}" enctype="multipart/form-data">
-              <div class="input-group mb-3">
-                文件名：<input name="title"/>
-                文件：<input type="file" name="file" class="form-control" id="inputGroupFile02">
-                <button class="btn btn-primary" type="submit">上传</button>
-              </div>
-            </form> #}
-            {# <form action="/upload?_csrf={{ ctx.csrf | safe}}" enctype="multipart/form-data"> #} -->
-            <div class="form-group-lg my-3">
-              <label class="form-label">图片</label>
-              <div class="border rounded text-center upload">
-                <div class="upload-preview m-5">
-                  {% if todo.cover%}
-                  <img src="/public/admin/upload/{{ todo.cover }} class="img-fluid">
-                  {% endif %}
+                <div class="form-group">
+                  <label class="form-label" for="input-example-1">标题</label>
+                  <input class="form-input" type="text" id="input-example-1" placeholder="标题" style="width:300px;" value="{{ todo.title }}" name="title">
                 </div>
-                <input type="file" name="upload" class="d-none upload-file">
-                <input type="hidden" name="cover" value="{{ todo.cover }}">
-                <a href="#" class="d-block upload-trigger text-decoration-none mb-5">
-                  <i class="bi bi-cloud"></i>
-                  <span>点击选择需要上传的图片</span>
-                </a>
+
+               
+              <div class="form-group">
+                <label class="form-label" for="input-example-1">作者</label>
+                <input class="form-input" type="text" id="input-example-1" placeholder="作者" style="width:300px;" value="{{ todo.biaoqian }}" name="biaoqian">
               </div>
-              <div class="form-text">仅限上传2M以下图片</div>
-            </div>
-          </aside>
+
+              
+              <div class="form-group">
+                <label class="form-label" for="input-example-3">简介</label>
+                <textarea class="form-input" placeholder="简介" rows="3" id="zhaiyaoTextarea" name="zhaiyao">{{todo.zhaiyao}}</textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="input-example-3">文本内容</label>
+                <textarea class="form-input" placeholder="简介" rows="3" id="mytextarea" name="text">{{todo.text | safe }}</textarea>
+              </div>
+
+              <div class="form-group-lg my-3">
+                <label class="form-label">图片</label>
+                <div class="border rounded text-center upload">
+                  <div class="upload-preview m-5">
+                    {% if todo.cover%}
+                    <img src="/public/admin/upload/{{ todo.cover }} class="img-fluid">
+                    {% endif %}
+                  </div>
+                  <input type="file" name="upload" class="d-none upload-file">
+                  <input type="hidden" name="cover" value="{{ todo.cover }}">
+                  <a href="#" class="d-block upload-trigger text-decoration-none mb-5">
+                    <i class="bi bi-cloud"></i>
+                    <span>点击选择需要上传的图片</span>
+                  </a>
+                </div>
+                <div class="form-text">仅限上传2M以下图片</div>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-dark" type="submit" onclick = "return save()" onclick="myFunction()">保存</button>
+              </div>
+            </article>
         </div>
       </form>
     <style>
