@@ -30,4 +30,6 @@ module.exports = app => {
   router.post('/addAdmin', controller.addAdmin.index);
   router.post('/verifyAdmin', controller.verifyAdmin.index);
   router.get('/userAndAdmin', controller.userAndAdmin.index);
+  router.get('/content', controller.content.index);
+  router.get('/writeArticle', controller.content.article);
 };

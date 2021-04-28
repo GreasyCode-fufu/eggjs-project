@@ -17,6 +17,19 @@
   <link rel="stylesheet" href="../public/css/admin.css" />
   <link href="../public/css1/bootstrap.min.css" rel="stylesheet">
   <script src="../public/js/Chart.min.js"></script>
+  <script src="../public/js/tinymce/tinymce.min.js"></script>
+  <script>
+    tinymce.init({
+      selector: '#mytextarea',
+      language:'zh_CN',
+      height: 500,
+    //   inline: true,
+      plugins: 'code',
+    //   toolbar:'code',
+      quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+      quickbars_insert_toolbar: 'quickimage quicktable',
+    });
+  </script>
 </head>
 
 <body>
@@ -39,8 +52,8 @@
           <a href="#" class="list-group-item list-group-item-action py-2 ripple">
             <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
           </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a>
+          <a href="/content" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-chart-bar fa-fw me-3"></i><span>内容管理</span></a>
           <a href="/deleteuser" class="list-group-item list-group-item-action py-2 ripple"><i
               class="fas fa-globe fa-fw me-3"></i><span>网络</span></a>
           <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
