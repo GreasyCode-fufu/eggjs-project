@@ -3,20 +3,6 @@
 {% block main%}
 <div class="row">
 {% for todo in todoes%}
-    <!-- <div class="col-sm-3 my-3">
-            <div class="card">
-            <h7 class="card-title">{{ todo.id}}.</h7>
-            <img src="/public/admin/upload/{{ todo.cover }}" class="card-img-top">
-            <div class="card-body"> 
-                <h6 class="card-subtitle mb-2">{{ todo.title }}</h6>
-                <p class="card-text">{{ todo.biaoqian }}</p>
-                <p class="card-text">{{ todo.text | safe }}</p>
-                <p class="card-text">简介：{{ todo.zhaiyao}}</p>
-                <a href="/editcontent/{{ todo.id }}" class="btn btn-primary">编辑</a>
-                <a href="/deletecontent?id={{ todo.id }}" class="btn btn-primary">删除</a>
-            </div>
-        </div>
-    </div> -->
     <div class="col-sm-3 my-2">
         <div class="card">
             <div class="card-image">
