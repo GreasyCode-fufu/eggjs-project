@@ -30,6 +30,27 @@ module.exports = app => {
   router.post('/addAdmin', controller.addAdmin.index);
   router.post('/verifyAdmin', controller.verifyAdmin.index);
   router.get('/userAndAdmin', controller.userAndAdmin.index);
-  router.get('/content', controller.content.index);
+  router.get('/contents', controller.content.index);
   router.get('/writeArticle', controller.content.article);
+
+
+    // 栏目增删改查
+    router.get('/addlanmu', controller.todo.addlanmu);
+    router.post('/addlanmu', controller.todo.addlanmu);
+    router.get('/editlanmu/:id', controller.todo.editlanmu);
+    router.post('/editlanmu/:id', controller.todo.editlanmu);
+    router.get('/lanmu',controller.todo.lanmu);
+    router.get('/deletelanmu', controller.todo.deletelanmu);
+  
+  
+      // 内容增删改查
+    router.get('/addcontent', controller.todo.addcontent);
+    router.post('/addcontent', controller.todo.addcontent);
+    router.get('/editcontent/:id', controller.todo.editcontent);
+    router.post('/editcontent/:id', controller.todo.editcontent);
+    router.get('/content',controller.todo.content);
+    router.get('/deletecontent', controller.todo.deletecontent);
+  
+    // 图片上传
+    router.post('/upload',controller.upload.upload);
 };

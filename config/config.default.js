@@ -56,6 +56,15 @@ exports.mysql = {
   agent: false,
 };
 
+// 配置上传文件
+exports.multipart={
+  mode:'file',
+  whitelist:[
+    '.png',
+    '.jpg',
+  ],
+}
+
   return {
     ...config,
     ...userConfig,

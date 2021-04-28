@@ -1,0 +1,189 @@
+
+      <form method='post'>
+        <div class="d-flex justify-content-around bg-light">
+          <article>
+            <div class="form-floating">
+                <h6>标题：</h6>
+                <input type="text" class="form-control"  name="title" value="{{ todo.title }}">
+            </div>
+            <div class="container">
+              <!-- {# <form> #} -->
+                <h6>文本内容：</h6>
+                <textarea name="text" id="mytextarea">{{todo.text | safe }}</textarea>
+              <!-- {# </form> #} -->
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-dark" type="submit" onclick = "return save()" onclick="myFunction()">保存</button>
+            </div>
+          </article>
+          <aside>
+            <div class="form-floating">
+                <h6>作者：</h6> 
+                <input type="text" class="form-control" trxtarea name="biaoqian" value="{{ todo.biaoqian }}">
+            </div>
+            <!-- {# <div class="input-group-lg my-3">
+              <label class="form-label">标签：</label>
+              <ul class="tags list-unstyled"></ul>
+              <div class="d-flex">
+                  <input type="text" name="tag-input" class="form-control">
+                  <button type="button" name="button" class="btn btn-primary ms-3 flex-grow-0 flex-shrink-0 tag-add" >添加</button>
+              </div>
+              <div class="form-text">仅限1~64个字符</div>
+            </div> #} -->
+           
+            <div class="form-floating">
+              <h6>简介（请输入1~500个中文汉字）</h6>
+              <textarea name="zhaiyao" class="form-control" placeholder="简介" id="zhaiyaoTextarea" style="height:20rem">{{todo.zhaiyao}}</textarea>
+            </div>
+        
+            <!-- {# <form action="/upload?_csrf={{ ctx.csrf | safe}}" enctype="multipart/form-data">
+              <div class="input-group mb-3">
+                文件名：<input name="title"/>
+                文件：<input type="file" name="file" class="form-control" id="inputGroupFile02">
+                <button class="btn btn-primary" type="submit">上传</button>
+              </div>
+            </form> #}
+            {# <form action="/upload?_csrf={{ ctx.csrf | safe}}" enctype="multipart/form-data"> #} -->
+            <div class="form-group-lg my-3">
+              <label class="form-label">图片</label>
+              <div class="border rounded text-center upload">
+                <div class="upload-preview m-5">
+                  {% if todo.cover%}
+                  <img src="/public/admin/upload/{{ todo.cover }} class="img-fluid">
+                  {% endif %}
+                </div>
+                <input type="file" name="upload" class="d-none upload-file">
+                <input type="hidden" name="cover" value="{{ todo.cover }}">
+                <a href="#" class="d-block upload-trigger text-decoration-none mb-5">
+                  <i class="bi bi-cloud"></i>
+                  <span>点击选择需要上传的图片</span>
+                </a>
+              </div>
+              <div class="form-text">仅限上传2M以下图片</div>
+            </div>
+          </aside>
+        </div>
+      </form>
+    <style>
+      img{
+        height:10rem;
+        width:15rem;
+      }
+      button{
+        margin:1.5rem;
+      }
+    </style>
+
+
+    {% block script%}
+         <script src="/public/js/tinymce/tinymce.min.js"></script>
+        <script>
+            tinymce.init({
+                  selector:'#mytextarea',
+                  language:'zh_CN',
+                  menubar :false,
+                  height  :530,
+                  width:650,
+                  branding:false,
+                  document_base_url: window.location.protocol + '//' + window.location.host + '/',
+                  plugins :'image lists link charmap table image codesample code',
+                  toolbar :'styleselect bold aligncenter blockquote subscript superscript bullist numlist link unlink removeformat charmap table uploadimage codesample code',
+                  style_formats:[
+                      {title:'大标题',format:'h2'},
+                      {title:'小标题',format:'h3'},
+                      {title:'段落',format:'p'},
+                      {title:'代码',format:'code'}
+                  ],
+                  setup: function(editor){
+                      editor.ui.registry.addButton('uploadimage',{
+                          tooltip:'上传图片',
+                          icon:'image',
+                          onAction:function(){
+                              let Cookie    = {};
+                              document.cookie.split('; ').forEach((item) => {
+                              Cookie[item.split('=')[0]] = item.split('=')[1];
+                              });
+                              var input       = document.createElement('input');
+                              input.setAttribute('type','file');
+                              input.onchange  = function(e){
+                                  var formData    = new FormData();
+                                  formData.append('upload', this.files[0]);
+                                  var xhr     = new XMLHttpRequest();
+                                  xhr.open('POST', '/upload');
+                                  xhr.setRequestHeader('x-csrf-token',Cookie.csrfToken);
+                                  xhr.addEventListener('load',() => {
+                                      if(xhr.readyState === 4 && xhr.status === 200){
+                                          let result  = JSON.parse(xhr.responseText);
+                                          console.log(result);
+                                          if(result.state){
+                                              let img = '<img src="/public/admin/upload/' + result.filename + '">';
+                                              console.log(img);
+                                              editor.insertContent(img);
+                                          } else {
+                                              for(i in result.errors){
+                                                  editor.notificationManager.open({
+                                                      text: result.errors[i],
+                                                      type: 'error'
+                                                  });
+                                              }
+                                          }
+                                      }
+                                  });
+                                  xhr.send(formData);
+                              }
+                              input.click();
+                          }
+                      })
+                  }
+              });
+            
+        </script>
+        <script>
+            function myFunction(){
+                    alert('添加成功');
+                }
+        </script>
+        
+        <script>
+          let Cookie={};
+          document.cookie.split('; ').forEach((item)=>{
+            let temp=item.split('=');
+            Cookie[temp[0]]=temp[1];
+          });
+
+
+
+          var upload=document.querySelector('.upload');
+          var cover=upload.querySelector('input[name=cover]');
+          var uploadFile=upload.querySelector('.upload-file');
+          var uploadPreview=upload.querySelector('.upload-preview');
+          var uploadTrigger=upload.querySelector('.upload-trigger');
+          uploadFile.addEventListener("change",(e)=>{
+            var formData=new FormData();
+            formData.append('upload',uploadFile.files[0]);
+            var xhr=new XMLHttpRequest();
+            xhr.open('POST','/upload');
+            xhr.setRequestHeader('x-csrf-token',Cookie.csrfToken);
+            xhr.addEventListener('load',()=>{
+              if(xhr.readyState===4 && xhr.status===200){
+                let result =JSON.parse(xhr.responseText);
+                cover.setAttribute('value',result.filename);
+                let image=uploadPreview.querySelector('img');
+                if(image){
+                  image.remove();
+                }              
+                image=document.createElement('img');
+                image.classList.add['img-fluid'];
+                image.setAttribute('src','/public/admin/upload/'+result.filename);
+                uploadPreview.append(image);
+                }
+            });
+            xhr.send(formData);
+          });
+          uploadTrigger.addEventListener("click",(e)=>{
+            e.preventDefault();
+            uploadFile.click();
+          });
+        </script>
+        {% endblock%}
+

@@ -1,0 +1,35 @@
+<form method="post">
+    <!-- {# <p>类别:</p>
+    <input type="text" name="leibie" value="{{ todo.leibie }}">
+    <p></p>
+    <button type="submit" onclick="myFunction()">保存</button> #} -->
+    <div class="container bg-white my-5 p-5">
+        <div class="col-sm-4 my-2 mx-auto">
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">类别</label> 
+                <input type="text" class="form-control" trxtarea name="leibie" value="{{ todo.leibie }}">
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-dark" type="submit" onclick="myFunction()">保存</button>
+            </div>
+        </div>
+    </div>
+</form>
+{# <style>
+    button{
+        color:blue;
+        height:2.5rem;
+        width:10.5rem;
+        }
+    input{
+        height:2.5rem;
+        width:10.5rem;
+    }
+
+</style> #}
+<script>
+    function myFunction(){
+            alert('添加成功！');
+        }
+</script>
+
