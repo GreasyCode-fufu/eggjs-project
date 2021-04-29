@@ -31,7 +31,8 @@ module.exports = app => {
   router.post('/verifyAdmin', controller.verifyAdmin.index);
   router.get('/userAndAdmin', controller.userAndAdmin.index);
   router.get('/contents', controller.content.index);
-  router.get('/writeArticle', controller.content.article);
+  // router.get('/writeArticle', controller.content.article);
+  router.get('/deleteAdmin', controller.deleteAdmin.index);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);

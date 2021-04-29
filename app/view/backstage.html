@@ -140,9 +140,9 @@
                 alt="" loading="lazy" />
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">My profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
+              <li><a class="dropdown-item" id="delete">查看头像</a></li>
+              <li><a class="dropdown-item" href="#">设置</a></li>
+              <li><a class="dropdown-item" href="/sea">退出</a></li>
             </ul>
           </li>
         </ul>
@@ -158,6 +158,18 @@
     <div class="container pt-4">
       {% block main%} {% endblock%}
       {% block table %}{% endblock %}
+
+      <div class="modal modal-sm" id="modal-id" style="margin: auto;">
+        <div class="modal-container">
+          <!-- <form action="/verifyAdmin" method="post"> -->
+            <div class="modal-header">
+              <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
+              <div class="modal-title h5">用户头像</div>
+            </div>
+            <img src="../public/img/sufu.jpg">
+        </div>
+      </div>
+
     </div>
   </main>
   <!--Main layout-->
