@@ -21,7 +21,7 @@ module.exports = app => {
   router.get('/deleteuser', controller.deleteuser.deleteuser);
   router.get('/backstage/input', controller.backstage.input);
   router.post('/usertable', controller.usertable.confirm);
-  router.post('/usertable/deleteuser', controller.usertable.deleteuser);
+  router.get('/usertable/deleteuser', controller.deleteuser.deleteuser);
   router.get('/dataVisual', controller.dataVisual.dataBar);
   router.get('/homedetail', controller.home.homedetail);
   router.get('/poem', controller.home.poem);
@@ -33,24 +33,14 @@ module.exports = app => {
   router.get('/contents', controller.content.index);
   router.get('/writeArticle', controller.content.article);
 
-
-    // 栏目增删改查
-    router.get('/addlanmu', controller.todo.addlanmu);
-    router.post('/addlanmu', controller.todo.addlanmu);
-    router.get('/editlanmu/:id', controller.todo.editlanmu);
-    router.post('/editlanmu/:id', controller.todo.editlanmu);
-    router.get('/lanmu',controller.todo.lanmu);
-    router.get('/deletelanmu', controller.todo.deletelanmu);
+  // 内容增删改查
+  router.get('/addcontent', controller.todo.addcontent);
+  router.post('/addcontent', controller.todo.addcontent);
+  router.get('/editcontent/:id', controller.todo.editcontent);
+  router.post('/editcontent/:id', controller.todo.editcontent);
+  router.get('/content',controller.todo.content);
+  router.get('/deletecontent', controller.todo.deletecontent);
   
-  
-      // 内容增删改查
-    router.get('/addcontent', controller.todo.addcontent);
-    router.post('/addcontent', controller.todo.addcontent);
-    router.get('/editcontent/:id', controller.todo.editcontent);
-    router.post('/editcontent/:id', controller.todo.editcontent);
-    router.get('/content',controller.todo.content);
-    router.get('/deletecontent', controller.todo.deletecontent);
-  
-    // 图片上传
-    router.post('/upload',controller.upload.upload);
+  // 图片上传
+  router.post('/upload',controller.upload.upload);
 };

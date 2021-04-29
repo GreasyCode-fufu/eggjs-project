@@ -33,8 +33,8 @@ class HomeService extends Service {
     
   }
 
-  async deleteuser(useremail) {
-    await this.app.mysql.query('delete from register where useremail = ?',[useremail]);
+  async deleteuser(id) {
+    await this.app.mysql.query('delete from register where userid = ?',[id]);
     return "删除成功";
     
   }
