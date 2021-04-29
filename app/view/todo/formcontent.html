@@ -21,7 +21,7 @@
 
               <div class="form-group">
                 <label class="form-label" for="input-example-3">文本内容</label>
-                <textarea class="form-input" placeholder="简介" rows="3" id="mytextarea" name="text">{{todo.text | safe }}</textarea>
+                <textarea class="form-input" placeholder="" rows="3" id="mytextarea" name="text">{{todo.text | safe }}</textarea>
               </div>
 
               <div class="form-group-lg my-3">
@@ -29,7 +29,7 @@
                 <div class="border rounded text-center upload">
                   <div class="upload-preview m-5">
                     {% if todo.cover%}
-                    <img src="/public/admin/upload/{{ todo.cover }} class="img-fluid">
+                    <img src="/public/admin/upload/{{ todo.cover }}" class="img-fluid">
                     {% endif %}
                   </div>
                   <input type="file" name="upload" class="d-none upload-file">
@@ -71,7 +71,7 @@
                   branding:false,
                   document_base_url: window.location.protocol + '//' + window.location.host + '/',
                   plugins :'image lists link charmap table image codesample code',
-                  toolbar :'styleselect bold aligncenter blockquote subscript superscript bullist numlist link unlink removeformat charmap table uploadimage codesample code',
+                  toolbar :'styleselect bold aligncenter blockquote subscript superscript bullist numlist link unlink removeformat charmap table codesample code',
                   style_formats:[
                       {title:'大标题',format:'h2'},
                       {title:'小标题',format:'h3'},
