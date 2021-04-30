@@ -21,7 +21,7 @@
                         <th scope="row">{{item.userid}}</th>
                         <td>{{item.useremail}}</td>
                         <td>{{item.telephone}}</td>
-                        <td><a href="/backstage/input" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="/usertable/deleteuser?id={{ item.userid }}" >删 除</a></td>
+                        <td><a href="/editUser/{{item.userid}}" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="/usertable/deleteuser?id={{ item.userid }}" >删 除</a></td>
                       </tr>
                       {% endfor %}
                     </tbody>

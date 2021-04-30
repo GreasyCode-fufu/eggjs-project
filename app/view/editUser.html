@@ -1,0 +1,28 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+        <div class="card mb-5 wow fadeIn">
+            <div class="col-md-5 mb-5" style="padding-left: 180px;">
+            <br />
+            <br />
+    
+                <form method="post">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" style="font-size: 30px;">用户信息</label></br>
+                    <input type="email" class="form-input" id="exampleInputEmail1" aria-describedby="emailHelp" name="useremail" value="{{edit.email}}">
+                    <small id="emailHelp" class="form-text text-muted" style="font-size: 16px;">用户邮箱</small>
+                    <label class="form-label" for="input-example-1">性别</label>
+                    <input class="form-input" type="text" id="input-example-1" placeholder="性别" name="gender" value="{{edit.gender}}">
+                    <label class="form-label" for="input-example-1">年龄</label>
+                    <input class="form-input" type="text" id="input-example-1" placeholder="年龄" name="age" value="{{edit.age}}">
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">确定
+                </button>
+                </form>
+            
+            </div>
+
+        </div>
+
+
+{% endblock %}

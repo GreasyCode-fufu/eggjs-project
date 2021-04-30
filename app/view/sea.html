@@ -6,6 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/css/seastyle.css">
     <title>主页</title>
+    <script>
+        window.Papercups = {
+          config: {
+            // Pass in your Papercups account token here after signing up
+            accountId: '21552fe2-1717-481e-b848-49c29f68bde4',
+            title: '您好，牧野一号欢迎您',
+            subtitle: '您可以询问一切您想了解的业务 😊',
+            newMessagePlaceholder: '开始输入...',
+            primaryColor: '#7556EB',
+            // Optionally pass in a default greeting
+            greeting: '您好，我是客服阿祥，很高兴为您服务！😊',
+            // Optionally pass in metadata to identify the customer
+            customer: {
+              name: '客户',
+              email: 'sun307157171@163.com',
+              external_id: '123',
+              metadata: {version: 1, plan: 'premium'}, // Custom fields go here
+            },
+            // Optionally specify the base URL
+            baseUrl: 'https://app.papercups.io',
+            // Add this if you want to require the customer to enter
+            // their email before being able to send you a message
+            requireEmailUpfront: true,
+            // Add this if you want to indicate when you/your agents
+            // are online or offline to your customers
+            showAgentAvailability: true,
+            agentAvailableText: "客服在线",
+            persistOpenState: true,
+          },
+        };
+      </script>
+      <script
+        type="text/javascript"
+        async
+        defer
+        src="https://app.papercups.io/widget.js"
+      ></script>
 </head>
 <body>
     <section class="showcase">
