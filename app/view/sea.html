@@ -7,41 +7,38 @@
     <link rel="stylesheet" href="../public/css/seastyle.css">
     <title>主页</title>
     <script>
-        window.Papercups = {
-          config: {
-            // Pass in your Papercups account token here after signing up
-            accountId: '21552fe2-1717-481e-b848-49c29f68bde4',
-            title: '您好，牧野一号欢迎您',
-            subtitle: '您可以询问一切您想了解的业务 😊',
-            newMessagePlaceholder: '开始输入...',
-            primaryColor: '#7556EB',
-            // Optionally pass in a default greeting
-            greeting: '您好，我是客服阿祥，很高兴为您服务！😊',
-            // Optionally pass in metadata to identify the customer
-            customer: {
-              name: '客户',
-              email: 'sun307157171@163.com',
-              external_id: '123',
-              metadata: {version: 1, plan: 'premium'}, // Custom fields go here
-            },
-            // Optionally specify the base URL
-            baseUrl: 'https://app.papercups.io',
-            // Add this if you want to require the customer to enter
-            // their email before being able to send you a message
-            requireEmailUpfront: true,
-            // Add this if you want to indicate when you/your agents
-            // are online or offline to your customers
-            showAgentAvailability: true,
-            agentAvailableText: "客服在线",
-            persistOpenState: true,
-          },
-        };
+      window.Papercups = {
+        config: {
+          accountId: "4120babd-d351-4269-99d7-7fefb770b9df",
+          title: "孙福祥泥沙服务集团",
+          subtitle: "您可以咨询一切您有疑问的问题😊",
+          primaryColor: "#9900ef",
+          greeting: "您好，很高兴为您服务😊",
+          awayMessage: "抱歉，客服有点忙！🐇",
+          newMessagePlaceholder: "Start typing...",
+          showAgentAvailability: false,
+          agentAvailableText: "客服在线",
+          agentUnavailableText: "客服在线",
+          requireEmailUpfront: false,
+          iconVariant: "outlined",
+          baseUrl: "https://app.papercups.io",
+          // Optionally include data about your customer here to identify them
+          // customer: {
+          //   name: __CUSTOMER__.name,
+          //   email: __CUSTOMER__.email,
+          //   external_id: __CUSTOMER__.id,
+          //   metadata: {
+          //     plan: "premium"
+          //   }
+          // }
+        },
+      };
       </script>
       <script
-        type="text/javascript"
-        async
-        defer
-        src="https://app.papercups.io/widget.js"
+      type="text/javascript"
+      async
+      defer
+      src="https://app.papercups.io/widget.js"
       ></script>
 </head>
 <body>
