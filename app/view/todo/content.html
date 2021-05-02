@@ -6,15 +6,26 @@
     <div class="col-sm-3 my-2">
         <div class="card">
             <div class="card-image">
-            <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto;">
+                <sl-drawer label="文章图像" class="drawer-custom-size" style="--size: 50vw;">
+                    <!-- This drawer is always 50% of the viewport. -->
+                    <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto; height: auto; width: auto;">
+                <sl-button slot="footer" type="primary">关闭</sl-button>
+                </sl-drawer>
+                <a><img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto;"></a>
             </div>
             <div class="card-header">
             <div class="card-title h5">{{ todo.title }}</div>
-            <div class="card-subtitle text-gray">{{ todo.biaoqian }}</div>
+            <div class="card-subtitle text-gray">{{ todo.biaoqian }}
+                <div style="float:right;">
+                    <!-- <sl-rating max="3"></sl-rating> -->
+                    <sl-rating max="3" class="rating-hearts" style="--symbol-color-active: #ff4136;"></sl-rating>
+                </div>
+            </div>
             </div>
             <div class="card-body">
                 {{ todo.text | safe }}
             </div>
+            
             <div class="card-footer">
             <!-- <button class="btn btn-primary">...</button> -->
             <a href="/editcontent/{{ todo.id }}" class="btn btn-sm btn-link">编辑</a>
@@ -33,3 +44,19 @@
 
 
 {% endblock%}
+
+{% block script %}
+<script>
+    const drawer = document.querySelector('.drawer-custom-size');
+    const openButton = drawer.nextElementSibling;
+    const closeButton = drawer.querySelector('sl-button[type="primary"]');
+  
+    openButton.addEventListener('click', () => drawer.show());
+    closeButton.addEventListener('click', () => drawer.hide());
+  </script>
+
+<script>
+    const rating = document.querySelectors('.rating-hearts');
+    rating.getSymbol = () => '<sl-icon name="heart-fill"></sl-icon>'; 
+  </script>
+{% endblock %}

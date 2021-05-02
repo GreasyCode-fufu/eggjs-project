@@ -8,11 +8,13 @@
   },
   "dependencies": {
     "@papercups-io/chat-widget": "^1.1.10",
+    "@shoelace-style/shoelace": "^2.0.0-beta.39",
     "egg": "^2.15.1",
     "egg-mysql": "^3.0.0",
     "egg-scripts": "^2.11.0",
     "egg-validate": "^2.0.2",
-    "egg-view-nunjucks": "^2.3.0"
+    "egg-view-nunjucks": "^2.3.0",
+    "rough-viz": "^1.0.6"
   },
   "devDependencies": {
     "autod": "^3.0.1",

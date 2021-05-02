@@ -17,7 +17,10 @@
   <link rel="stylesheet" href="../public/css/mdb.min.css" />
   <link rel="stylesheet" href="../public/css/admin.css" />
 
+
   {% block style%}{% endblock%}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/themes/base.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/shoelace.js"></script>
 
   <script src="../public/js/Chart.min.js"></script>
   <script src="../public/js/tinymce/tinymce.min.js"></script>
@@ -34,7 +37,7 @@
     });
   </script>
 
-<script>
+<!-- <script>
   window.Papercups = {
     config: {
       accountId: "4120babd-d351-4269-99d7-7fefb770b9df",
@@ -67,10 +70,13 @@
       async
       defer
       src="https://app.papercups.io/widget.js"
-      ></script>
+      ></script> -->
+
+  <script src="https://unpkg.com/rough-viz@1.0.6"></script>
 </head>
 
 <body>
+ 
   <!--Main Navigation-->
   <header>
     <!-- Sidebar -->
@@ -209,6 +215,7 @@
   </main>
   <!--Main layout-->
   <!-- MDB -->
+
   <script type="text/javascript" src="../public/js/mdb.min.js"></script>
   <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
   <!-- Custom scripts -->

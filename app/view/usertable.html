@@ -1,9 +1,15 @@
 {% extends "backstage.html" %}
 
+{% block style %}
+  
+{% endblock %}
+
 {% block table %}
 
-              <div class="card">
+            <div class="card">
+                
                 <div class="card-body">
+                  
                   <table class="table table-hover table-striped">
                     
                     <br />
@@ -21,35 +27,38 @@
                         <th scope="row">{{item.userid}}</th>
                         <td>{{item.useremail}}</td>
                         <td>{{item.telephone}}</td>
-                        <td><a href="/editUser/{{item.userid}}" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" href="/usertable/deleteuser?id={{ item.userid }}" >删 除</a></td>
+                        
+                        <td><a href="/editUser/{{item.userid}}" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                          <sl-dialog label="提示" class="dialog-no-overlay-dismiss">
+                            <h5>您确认要删除该用户吗？</h5>
+                            <sl-button size="small" slot="footer" type="warning" href="/usertable/deleteuser?id={{ item.userid }}">确认</sl-button>
+                          </sl-dialog>
+                          <a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" type="success" >删 除</a></td>
+                        
                       </tr>
                       {% endfor %}
                     </tbody>
                     
                   </table>
-                  
+                               
                 </div>
             </div>
+           
+         
+{% endblock %}
 
-            <!-- <div class="modal modal" id="modal-id">
-              <div class="modal-container">
-                <div class="modal-header">
-                  <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
-                  <div class="modal-title h5">注意</div>
-                </div>
-                <div class="modal-body">
-                  <div class="content">
-                    确定删除该用户吗？
-                  </div>
-                </div>
-      
-                <div class="modal-footer">
-                  <a class="btn btn-sm btn-error" href="/deleteuser?id={{ item.userid }}">确定</a>
-                  <button class="btn btn-link btn-sm" id="cancal">取消</button>
-                </div>
-                
-              </div>
-            </div> -->
-         
-         
+{% block script %}
+
+<script>
+  const dialog = document.querySelector('.dialog-no-overlay-dismiss');
+  const openButton = dialog.nextElementSibling;
+  const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+
+  openButton.addEventListener('click', () => dialog.show());
+  closeButton.addEventListener('click', () => dialog.hide());
+
+  dialog.addEventListener('sl-overlay-dismiss', event => event.preventDefault());
+</script>
+  
+
 {% endblock %}

@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="../public/css/spectre.min.css">
     <link rel="stylesheet" href="../public/css/spectre-exp.min.css">
     <link rel="stylesheet" href="../public/css/spectre-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/themes/base.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/shoelace.js"></script>
+
     
     <script>
       window.Papercups = {
@@ -51,6 +54,7 @@
       defer
       src="https://app.papercups.io/widget.js"
       ></script>
+
 </head>
 <body>
       <!--Main Navigation-->
@@ -125,7 +129,7 @@
       </div>
     </nav>
     <!-- Navbar -->
-
+    
     <!-- Carousel wrapper -->
     <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
       <!-- Indicators -->
@@ -322,7 +326,7 @@
       </section>
       <!--Section: Content-->
 
-      <div class="modal modal-sm" id="modal-id" style="margin: auto;">
+      <!-- <div class="modal modal-sm" id="modal-id" style="margin: auto;">
         <div class="modal-container">
           <form action="/verifyAdmin" method="post">
             <div class="modal-header">
@@ -343,9 +347,9 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
 
-
+      
     </div>
   </main>
   <!--Main layout-->
@@ -360,9 +364,46 @@
       © 2021 Copyright:
       <a class="text-dark" href="#">智慧应用开发</a>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <form action="/verifyAdmin" method="post">
+      <sl-drawer label="权限验证" placement="top" class="drawer-placement-top">
+        
+        <!-- <div style="width:420px; margin:auto; margin-left: 460px;">
+          <div style="float: left;">
+            <h4>管理员</h4>
+          </div>
+          <sl-input size="medium" placeholder="姓名" clearable name="adminName"></sl-input>
+          <br />
+          <div style="float: left;">
+            <h4>密码</h4>
+           </div>
+
+          <sl-input type="password" size="medium" placeholder="密码" toggle-password name="adminPassword"></sl-input>
+          
+
+        </div> -->
+        <div class="modal-body">
+          <div class="form-group">
+            <div style="width:420px; margin:auto; margin-left: 460px;">
+              <div style="float: left;">
+                <label class="form-label" for="input-example-1" style="font-size:20px">管理员</label>
+              </div>
+              <input class="form-input" type="text" id="input-example-1" placeholder="姓名" name="adminName">
+              <br>
+              <div style="float: left;">
+                <label class="form-label" for="input-example-1" style="font-size:20px">密码</label>
+              </div>
+              <input class="form-input" type="text" id="input-example-1" placeholder="密码" name="adminPassword" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$">
+            </div>
+          </div>
+        </div>
+
+        <button slot="footer" type="primary" size="medium" submit class="btn btn-primary">确定</button>
+      
+      </sl-drawer>
+    
       <a class="text-dark" id="access">数据管理</a>
     </div>
-
+  </form>
   </footer>
   <!--Footer-->
     <!-- MDB -->
@@ -371,6 +412,15 @@
     <script type="text/javascript" src="../public/js/script.js"></script>
 
     <script>
+      const drawer = document.querySelector('.drawer-placement-top');
+      const openButton = drawer.nextElementSibling;
+      const closeButton = drawer.querySelector('sl-button[type="primary"]');
+    
+      openButton.addEventListener('click', () => drawer.show());
+      closeButton.addEventListener('click', () => drawer.hide());
+    </script>
+
+    <!-- <script>
       let value = document.getElementById('access');
       let modal = document.getElementById('modal-id');
       let remove = document.getElementById('remove');
@@ -385,6 +435,6 @@
         modal.classList.remove('active');
       });
   
-    </script>
+    </script> -->
 </body>
 </html>

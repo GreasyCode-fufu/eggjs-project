@@ -1,0 +1,34 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+<div id="viz0">
+    new roughViz.Bar({
+        element: '#viz0', // container selection
+        data: 'https://raw.githubusercontent.com/jwilber/random_data/master/flavors.csv',
+        labels: 'flavor',
+        values: 'price'
+    });
+</div>
+
+
+<div id="viz1">
+    new roughViz.Donut(
+  {
+    element: '#viz1',
+    data: {
+      labels: ['North', 'South', 'East', 'West'],
+      values: [10, 5, 8, 3]
+    },
+    title: "Regions",
+    width: window.innerWidth / 4,
+    roughness: 8,
+    colors: ['red', 'orange', 'blue', 'skyblue'],
+    stroke: 'black',
+    strokeWidth: 3,
+    fillStyle: 'cross-hatch',
+    fillWeight: 3.5,
+  }
+);
+</div>
+
+{% endblock %}
