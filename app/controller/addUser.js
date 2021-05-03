@@ -3,13 +3,13 @@
 const Controller = require('egg').Controller;
 const PasswordHelper = require('./password2');
 
-class RegisterController extends Controller {
+class AddUserController extends Controller {
   async index() {
-    const {ctx} = this;
-    await ctx.render('register');
+    const { ctx } = this;
+    await ctx.render('adduser');
   }
 
-  async adduser(){
+  async adduserSuccess() {
     const {ctx} = this;
     let passwordHelper = new PasswordHelper();
     let useremail = ctx.request.body.useremail;
@@ -31,11 +31,13 @@ class RegisterController extends Controller {
     let sql =await this.ctx.service.adduser.index(useremail, hashedPassword, verifyResult, telephone);
 
     if(sql === "注册成功，请登录！"){
-      await ctx.render('register',{sql});
+        
+        let sql=await this.ctx.service.selectuser.usertable(); 
+        await ctx.render('usertable',{sql});
     }else{
-      await ctx.render('register',{sql});
+      await ctx.render('fails');
     }
   }
 }
 
-module.exports = RegisterController;
+module.exports = AddUserController;

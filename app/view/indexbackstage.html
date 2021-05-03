@@ -1,4 +1,4 @@
-{% extends "backstage.html" %}
+{% extends "purebackstage.html" %}
 
 {% block style %}
     <style>
@@ -9,14 +9,43 @@
 {% endblock %}
 
 {% block table %}
-    <!-- <div class="h1">Welcome!</div> -->
-    <!-- <img src="../public/img/houtai.png"></img> -->
-    <sl-dialog label="Dialog" class="dialog-no-overlay-dismiss">
-        This dialog will not be closed when you click outside of it.
-        <sl-button slot="footer" type="primary">Close</sl-button>
-      </sl-dialog>
-      
-      <a>Open Dialog</a>
+<div class="alert-toast">
+    <sl-button type="submit">Primary</sl-button>
+    <sl-button type="success">Success</sl-button>
+    <sl-button type="info">Info</sl-button>
+    <sl-button type="warning">Warning</sl-button>
+    <sl-button type="danger">Danger</sl-button>
+    
+    <sl-alert type="submit" duration="3000" closable>
+      <sl-icon slot="icon" name="info-circle"></sl-icon>
+      <strong>This is super informative</strong><br>
+      You can tell by how pretty the alert is.
+    </sl-alert>
+  
+    <sl-alert type="success" duration="3000" closable>
+      <sl-icon slot="icon" name="check2-circle"></sl-icon>
+      <strong>Your changes have been saved</strong><br>
+      You can safely exit the app now.
+    </sl-alert>
+  
+    <sl-alert type="info" duration="3000" closable>
+      <sl-icon slot="icon" name="gear"></sl-icon>
+      <strong>Your settings have been updated</strong><br>
+      Settings will take affect on next login.
+    </sl-alert>
+  
+    <sl-alert type="warning" duration="3000" closable>
+      <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+      <strong>Your session has ended</strong><br>
+      Please login again to continue.
+    </sl-alert>
+  
+    <sl-alert type="danger" duration="3000" closable>
+      <sl-icon slot="icon" name="exclamation-octagon"></sl-icon>
+      <strong>Your account has been deleted</strong><br>
+      We're very sorry to see you go!
+    </sl-alert>
+  </div>
       
       
     
@@ -24,14 +53,14 @@
 
 {% block script %}
 <script>
-    const dialog = document.querySelector('.dialog-no-overlay-dismiss');
-    const openButton = dialog.nextElementSibling;
-    const closeButton = dialog.querySelector('sl-button[slot="footer"]');
+    const container = document.querySelector('.alert-toast');
   
-    openButton.addEventListener('click', () => dialog.show());
-    closeButton.addEventListener('click', () => dialog.hide());
+    ['submit','primary', 'success', 'info', 'warning', 'danger'].map(type => {
+      const button = container.querySelector(`sl-button[type="${type}"]`);
+      const alert = container.querySelector(`sl-alert[type="${type}"]`);
   
-    dialog.addEventListener('sl-overlay-dismiss', event => event.preventDefault());
-</script>
+      button.addEventListener('click', () => alert.toast());
+    });
+  </script>
 {% endblock %}
 

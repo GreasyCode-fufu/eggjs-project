@@ -1,0 +1,36 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+
+<div class="card">
+    
+    <div class="card-body" style="width:600px; padding-left: 180px; margin-top: -60px;">
+        <br>
+        <br>
+        
+            <form action="/adduser" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" style="font-size: 30px;">添加用户</label></br>
+                    <label class="form-label" for="input-example-1">邮箱地址</label>
+                    <input class="form-input input-lg" type="email" id="input-example-1" placeholder="邮箱" name="useremail">
+                    <label class="form-label" for="input-example-1">密码</label>
+                    <input class="form-input input-lg" type="password" placeholder="密码" name="userpassword">
+                    <label class="form-label" for="input-example-1">确认密码</label>
+                    <input class="form-input input-lg" type="password" placeholder="确认密码" name="verify">
+                    <label class="form-label" for="input-example-1">电话号码</label>
+                    <input class="form-input input-lg" type="password" placeholder="电话号码" name="telephone">
+                </div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="margin-top:20px;">确定</button>
+            </form>                  
+            
+            
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

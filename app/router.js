@@ -33,6 +33,8 @@ module.exports = app => {
   router.get('/contents', controller.content.index);
   router.get('/deleteAdmin', controller.deleteAdmin.index);
   router.get('/article/:id', controller.content.article);
+  router.get('/adduser', controller.addUser.index);
+  router.post('/adduser', controller.addUser.adduserSuccess);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);
