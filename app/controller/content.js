@@ -9,8 +9,11 @@ class ContentController extends Controller {
   }
 
   async article() {
-    const { ctx } = this;
-    await ctx.render('article');
+    let id      = this.ctx.params.id;
+
+    let todo  = await this.ctx.service.todo.getTodocontent(id);        
+    await this.ctx.render('article', {todo});
+
   }
 
 }

@@ -32,6 +32,7 @@ module.exports = app => {
   router.get('/userAndAdmin', controller.userAndAdmin.index);
   router.get('/contents', controller.content.index);
   router.get('/deleteAdmin', controller.deleteAdmin.index);
+  router.get('/article/:id', controller.content.article);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);

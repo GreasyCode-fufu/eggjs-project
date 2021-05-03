@@ -1,11 +1,30 @@
-{% extends "backstage.html" %}
+{% extends "purebackstage.html" %}
+
 
 {% block table %}
-    <div class="writeAticle">
-    <!-- <h1>TinyMCE快速开始示例</h1> -->
-        <form method="post">
-            <textarea id="mytextarea">Hello, World!</textarea>
-        </form>
+    <div class="card">
+        
+        <div class="card-header">
+        <div class="card-title h5">{{ todo.title }}</div>
+        <div class="card-subtitle text-gray">{{todo.zhaiyao}}</div>
+        </div>
+        <div class="card-body">
+          {{todo.text | safe }}
+        </div>
+        <div class="card-image">
+          <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive">
+          <sl-button href="/content" type="default" size="medium" circle style="float:right; margin-bottom: 3rem; margin-right: 2rem;"><sl-icon name="arrow-left"></sl-icon></sl-button>
+        </div>
+        
     </div>
+    
+    <style>
+      img{
+          height:27rem;
+          width:30rem;
+          margin:auto;
+          margin-bottom: 2rem;
+      }
+    </style>
 
 {% endblock %}
