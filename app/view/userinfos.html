@@ -1,0 +1,33 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+
+<div class="card">
+    
+    <div class="card-body" style="width:600px; padding-left: 180px; margin-top: -60px;">
+        <br>
+        <br>
+        
+            <form method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" style="font-size: 30px;">用户信息</label></br>
+                    <!-- <label class="form-label" for="input-example-1">用户ID</label>
+                    <input class="form-input input-lg" type="text" id="input-example-1" name="userid"> -->
+
+                    <label class="form-label" for="input-example-1">邮箱地址</label>
+                    <input class="form-input input-lg" type="email" id="input-example-1" placeholder="邮箱" name="useremail" value="{{item.useremail}}">
+                    <label class="form-label" for="input-example-1">性别</label>
+                    <input class="form-input input-lg" type="text" placeholder="性别" name="gender">
+                    <label class="form-label" for="input-example-1">年龄</label>
+                    <input class="form-input input-lg" type="text" placeholder="年龄" name="age">
+                </div>
+                    <button type="submit" class="btn btn-primary btn-lg" style="margin-top:20px;">确定</button>
+            </form>                  
+            
+            
+    </div>
+</div>
+
+
+{% endblock %}

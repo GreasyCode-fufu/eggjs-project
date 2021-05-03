@@ -17,11 +17,11 @@
                       <a href="/adduser">添加用户</a>
                     </li>
                     <li class="breadcrumb-item">
-                      <a href="/detailUser">用户详情</a>
+                      <a href="/usertable">用户数据</a>
                     </li>
                     <li class="breadcrumb-item">
-                      <a href="#">用户数据</a>
-                    </li>
+                        <a href="#">用户详情</a>
+                      </li>
                   </ul>
                   <table class="table table-hover table-striped">
                     
@@ -31,7 +31,8 @@
                         <th>序号</th>
                         <th>邮箱</th>
                         <th>电话</th>
-                        <th>操作</th>
+                        <th>性别</th>
+                        <th>年龄</th>
                       </tr>
                     </thead>
                     <tbody style="text-align:center">
@@ -40,14 +41,8 @@
                         <th scope="row">{{item.userid}}</th>
                         <td>{{item.useremail}}</td>
                         <td>{{item.telephone}}</td>
-                        
-                        <td><a href="/edituser/{{item.userid}}" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                          <sl-dialog label="提示" class="dialog-no-overlay-dismiss">
-                            <h5>您确认要删除该用户吗？</h5>
-                            <sl-button size="small" slot="footer" type="warning" href="/usertable/deleteuser?id={{ item.userid }}">确认</sl-button>
-                          </sl-dialog>
-                          <a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" type="success" >删 除</a></td>
-                        
+                        <td>{{item.gender}}</td>
+                        <td>{{item.age}}</td>
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -62,16 +57,6 @@
 
 {% block script %}
 
-<script>
-  const dialog = document.querySelector('.dialog-no-overlay-dismiss');
-  const openButton = dialog.nextElementSibling;
-  const closeButton = dialog.querySelector('sl-button[slot="footer"]');
-
-  openButton.addEventListener('click', () => dialog.show());
-  closeButton.addEventListener('click', () => dialog.hide());
-
-  dialog.addEventListener('sl-overlay-dismiss', event => event.preventDefault());
-</script>
   
 
 {% endblock %}

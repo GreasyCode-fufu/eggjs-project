@@ -35,6 +35,10 @@ module.exports = app => {
   router.get('/article/:id', controller.content.article);
   router.get('/adduser', controller.addUser.index);
   router.post('/adduser', controller.addUser.adduserSuccess);
+  router.get('/edituser/:userid', controller.editUser.edituser);
+  router.post('/edituser/:userid', controller.editUser.edituser);
+  router.get('/gender', controller.gender.index);
+  router.get('/detailUser', controller.detailUser.index);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);

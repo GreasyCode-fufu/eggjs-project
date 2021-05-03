@@ -27,6 +27,27 @@ class CountService extends Service {
       return results1[0][key];
     }
   }
+
+
+  async countMale(){
+    let countMale = await this.app.mysql.query("select sum(case when gender='男' then 1 else 0 end ) from userinfo;");
+    let results2 = JSON.stringify(countMale);
+    results2 = JSON.parse(results2);
+    for (let key in results2[0]){
+      return results2[0][key];
+    }
+  }
+
+
+  async countFamale(){
+    let countFamale = await this.app.mysql.query("select sum(case when gender='女' then 1 else 0 end ) from userinfo;");
+    let results3 = JSON.stringify(countFamale);
+    results3 = JSON.parse(results3);
+    for (let key in results3[0]){
+      return results3[0][key];
+    }
+  }
+
 }
 
 module.exports = CountService;
