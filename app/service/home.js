@@ -19,7 +19,6 @@ class HomeService extends Service {
   }
 
   async confirm(userpassword) {
-    console.log({userpassword})
 
    let value =  await this.app.mysql.get('register', {
         userpassword:userpassword,

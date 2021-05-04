@@ -3,15 +3,6 @@ const Service   = require('egg').Service;
 class TodoService extends Service {
     // 内容=============================================
         async saveTodo2(title,text,cover,biaoqian,zhaiyao) {
-
-            console.log("service层接收到的数据：")
-            console.log(title);
-            console.log(text);
-            console.log(cover);
-            console.log(biaoqian);
-            console.log(zhaiyao);
-            
-    
             let result = await this.app.mysql.insert('content',{
                 title:title,
                 text:text,
