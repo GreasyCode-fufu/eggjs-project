@@ -15,7 +15,7 @@ class SuccessController extends Controller {
     if(service === "没有找到"){
         await ctx.render('error')
     }else{
-        await ctx.render('food');
+        await ctx.render('food');         //验证成功后便可跳转
     }
 
     

@@ -5,18 +5,18 @@ const Controller = require('egg').Controller;
 class ContentController extends Controller {
   async index() {
     const { ctx } = this;
-    await ctx.render('content');
+    await ctx.render('content');        //转到显示文章卡片页面
   }
 
   async article() {
-    let id      = this.ctx.params.id;
+    let id      = this.ctx.params.id;           //获取此处的id（通过前端页面的for循环获取元素对应的id值）
 
-    let todo  = await this.ctx.service.todo.getTodocontent(id);        
-    await this.ctx.render('article', {todo});
+    let todo  = await this.ctx.service.todo.getTodocontent(id);    //通过该id查找数据库中对应内容，返回给todo变量   
+    await this.ctx.render('article', {todo});       //将拥有此id的对象传给文章显示页面
 
   }
 
-  async list() {
+  async list() {            //分页功能
     //this.ctx.checkin()
     let count       = await this.ctx.service.content.getCategorysCount();
     let limit       = 4;

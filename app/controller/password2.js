@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const crypto = require('crypto');           //密码加密文件，看不懂
 
 class PasswordHelper {
 
