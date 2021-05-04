@@ -2,7 +2,7 @@
 
 {% block main%}
 <div class="row">
-{% for todo in todoes%}
+{% for todo in categorys%}
     <div class="col-sm-3 my-2">
         <div class="card">
             <div class="card-image">
@@ -34,6 +34,68 @@
         </div>
     </div>
 {% endfor %}
+
+<div>
+    <ul class="pagination justify-content-center mt-5">
+      {% if page === 1%}
+      <li class="page-item disabled">
+          <span class="page-link">首页</span>
+      </li>
+      <li class="page-item disabled">
+          <span class="page-link">上一页</span>
+      </li>
+      {%else%}
+      <li class="page-item">
+          <a href="/content?page=1"class="page-link">首页</a>
+      </li>
+      <li class="page-item">
+          <a href="/content?page={{ page - 1 }}"class="page-link">上一页</a>
+      </li>
+      {% endif %}
+      {% if start > 1 %}
+      <li class="page-item disabled">
+          <span class="page-link"> &middot;&middot;&middot;</span>
+      </li>
+      {% endif %}
+      {% for i in range(start,stop + 1) %}
+          {% if page === i %}
+          <li class="page-item active">
+              <span class="page-link">{{ i }}</span>
+          </li>
+          {% else %}
+          <li class="page-item">
+              <a href="/content?page={{ i }}"class="page-link">{{ i }}</a>
+          </li>
+          {% endif %}
+      {% endfor %}
+      {% if stop < pages %}
+      <li class="page-item disabled">
+          <span class="page-link">&middot;&middot;&middot;</span>
+      </li>
+      {% endif %}
+      {% if page === pages %}
+      <li class="page-item disabled">
+          <span class="page-link">下一页</span>
+      </li>
+      <li class="page-item disabled">
+          <span class="page-link">末页</span>
+      </li>
+      {% else %}
+      <li class="page-item">
+          <a href="/content?page={{ page + 1 }}" class="page-link">下一页</a>
+      </li>
+      <li class="page-item">
+          <a href="/content?page={{ pages }}" class="page-link">末页</a>
+      </li>
+      {% endif %}
+      <li class="page-item disabled">
+          <span class="page-link">{{ limit }}条/页</span>
+      </li>
+      <li class="page-item disabled">
+          <span class="page-link">共{{ count }}条</span>
+      </li>
+  </ul>
+</div>
 </div>
 <style>
     img{

@@ -45,7 +45,7 @@ module.exports = app => {
   router.post('/addcontent', controller.todo.addcontent);
   router.get('/editcontent/:id', controller.todo.editcontent);
   router.post('/editcontent/:id', controller.todo.editcontent);
-  router.get('/content',controller.todo.content);
+  router.get('/content', controller.content.list);
   router.get('/deletecontent', controller.todo.deletecontent);
   
   // 图片上传
