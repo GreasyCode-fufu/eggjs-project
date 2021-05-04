@@ -1,0 +1,72 @@
+{% extends "backstage.html" %}
+
+{% block table %}
+
+
+<div class="card">
+    <div class="card-body">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">首页</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/adduser">添加用户</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/detailUser">用户详情</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">用户数据</a>
+            </li>
+          </ul>
+        <sl-alert type="warning" open closable class="alert-closable">
+            <sl-icon slot="icon" name="exclamation-triangle"></sl-icon>
+            <strong>用户信息已添加，请勿重复添加！</strong><br>
+            
+        </sl-alert>
+        <table class="table table-hover table-striped">
+                    
+            <br />
+            <thead class="blue-grey lighten-4" style="text-align:center">
+              <tr >
+                <th>序号</th>
+                <th>邮箱</th>
+                <th>电话</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody style="text-align:center">
+              {% for item in sql %}
+              <tr>
+                <th scope="row">{{item.userid}}</th>
+                <td>{{item.useremail}}</td>
+                <td>{{item.telephone}}</td>
+                
+                <td><a href="/edituser/{{item.userid}}" class="label label-secondary">编 辑</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <sl-dialog label="提示" class="dialog-no-overlay-dismiss">
+                    <h5>您确认要删除该用户吗？</h5>
+                    <sl-button size="small" slot="footer" type="warning" href="/usertable/deleteuser?id={{ item.userid }}">确认</sl-button>
+                  </sl-dialog>
+                  <a style="border: none" class="label label-error" data-toggle="modal" data-target="#modalLoginAvatarDemo" type="success" >删 除</a></td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>                
+            
+            
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block stript %}
+<script>
+    const alert = document.querySelector('.alert-closable');
+    alert.addEventListener('sl-after-hide', () => {
+      setTimeout(() => alert.open = true, 2000);
+    });
+</script>
+
+
+{% endblock %}

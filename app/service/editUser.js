@@ -14,7 +14,7 @@ class EditUserService extends Service {
                     age:age,
                 })
         console.log(result);
-        return result.insertUserid;
+        return result.insertId;
   }
 }
 

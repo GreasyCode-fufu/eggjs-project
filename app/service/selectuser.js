@@ -10,6 +10,10 @@ class SelectuserService extends Service {
 
   }
 
+  async userinfo(userid){
+    return await this.app.mysql.get('userinfo', {userid});
+  }
+
   async detailUser(){
     let sql = await this.app.mysql.query('select * from register, userinfo where register.userid = userinfo.userid;', {orders: [['userid', 'desc']]});
     return sql;
