@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="../public/css/mdb.min.css" />
   <link rel="stylesheet" href="../public/css/admin.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/themes/base.css">
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/shoelace.js"></script>
 
 
@@ -36,40 +37,7 @@
       quickbars_insert_toolbar: 'quickimage quicktable',
     });
   </script>
-  <!-- <script>
-    window.Papercups = {
-      config: {
-        accountId: "4120babd-d351-4269-99d7-7fefb770b9df",
-        title: "孙福祥泥沙服务集团",
-        subtitle: "您可以咨询一切您有疑问的问题😊",
-        primaryColor: "#9900ef",
-        greeting: "您好，很高兴为您服务😊",
-        awayMessage: "抱歉，客服有点忙！🐇",
-        newMessagePlaceholder: "Start typing...",
-        showAgentAvailability: false,
-        agentAvailableText: "客服在线",
-        agentUnavailableText: "客服在线",
-        requireEmailUpfront: false,
-        iconVariant: "outlined",
-        baseUrl: "https://app.papercups.io",
-        // Optionally include data about your customer here to identify them
-        // customer: {
-        //   name: __CUSTOMER__.name,
-        //   email: __CUSTOMER__.email,
-        //   external_id: __CUSTOMER__.id,
-        //   metadata: {
-        //     plan: "premium"
-        //   }
-        // }
-      },
-    };
-    </script>
-    <script
-    type="text/javascript"
-    async
-    defer
-    src="https://app.papercups.io/widget.js"
-    ></script> -->
+  
 </head>
 
 <body>
@@ -109,82 +77,12 @@
     </nav>
     <!-- Sidebar -->
 
-    <!-- Navbar -->
-    <!-- <nav id="main-navbar" class="navbar navbar-expand-sm navbar-light bg-white fixed-top">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-
-        <a class="navbar-brand" href="#">
-          <img src="../public/img/SFX1.png" height="25" alt="" loading="lazy" style="margin-left: 30px;" />
-        </a> -->
-
-        <!-- <ul class="navbar-nav ms-auto d-flex flex-row" style="margin-right: 30px;">
-          <li class="nav-item dropdown">
-            <a class="nav-link me-3 me-lg-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
-              data-mdb-toggle="dropdown" aria-expanded="false" style="margin-top: 3px;">
-              <i class="china flag m-0"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li>
-               
-                <a class="dropdown-item" href="#"><i class="china flag"></i>中文
-                  <i class="fa fa-check text-success ms-2"></i></a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="poland flag"></i>Polski</a>
-              </li>
-              <li>
-                
-                <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/poem"><i class="japan flag"></i>日本語</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="germany flag"></i>Deutsch</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="france flag"></i>Français</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="spain flag"></i>Español</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="russia flag"></i>Русский</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#"><i class="portugal flag"></i>Português</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-              id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-              <img src="../public/img/sufu.jpg" class="rounded-circle" height="40"
-                alt="" loading="lazy" />
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="#">My profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
-    <!-- Navbar -->
+  
   </header>
   <!--Main Navigation-->
 
   <!--Main layout-->
-  <main style="margin-top: 100px">
+  <main style="margin-top: 20px">
     <div class="container pt-4">
       {% block main%} {% endblock%}
       {% block table %}{% endblock %}
@@ -213,6 +111,45 @@
     });
 
   </script>
+
+<script>
+  const form = document.querySelector('.form-overview');
+
+  // Watch for the slSubmit event
+  form.addEventListener('sl-submit', event => {
+    const formData = event.detail.formData;
+    let output = '';
+
+    //
+    // Example 1: Post data to a server and wait for a JSON response
+    //
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+      console.log('Success:', result);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+    //
+    // Example 2: Output all form control names + values
+    //
+    for (const entry of formData.entries()) {
+      output += `${entry[0]}: ${entry[1]}\n`;
+    }
+    alert(output);
+
+    //
+    // Example 3: Get all form controls that were serialized as 
+    // an array of HTML elements
+    //
+    console.log(event.detail.formControls);
+  });
+</script>
 
 </body>
 

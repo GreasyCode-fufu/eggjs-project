@@ -1,31 +1,21 @@
 {% extends "purebackstage.html" %}
 
 {% block main%}
-
-<div style="width:400px; margin: 50px auto; margin-top: -20px;">
-    <form action="/search" method="POST">
-      <div class="input-group">
-        <input type="text" class="form-input" placeholder="搜索文章" name="search">
-        <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
-      </div>
-    </form>
-</div>
-
 <div class="row">
-{% for todo in categorys%}
+{% for todo in result%}
     <div class="col-sm-3 my-2">
         <div class="card">
             <div class="card-image">
                 <sl-drawer label="文章图像" class="drawer-custom-size" style="--size: 50vw;">
                     <!-- This drawer is always 50% of the viewport. -->
-                    <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto; height: auto; width: auto;">
+                    <img src="/public/admin/upload/{{ todo.item.cover }}" class="img-responsive" style="margin: auto; height: auto; width: auto;">
                 <sl-button slot="footer" type="primary">关闭</sl-button>
                 </sl-drawer>
-                <a><img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto;"></a>
+                <a><img src="/public/admin/upload/{{ todo.item.cover }}" class="img-responsive" style="margin: auto;"></a>
             </div>
             <div class="card-header">
-            <div class="card-title h5">{{ todo.title }}</div>
-            <div class="card-subtitle text-gray">{{ todo.biaoqian }}
+            <div class="card-title h5">{{ todo.item.title }}</div>
+            <div class="card-subtitle text-gray">{{ todo.item.biaoqian }}
                 <div style="float:right;">
                     <!-- <sl-rating max="3"></sl-rating> -->
                     <sl-rating max="3" class="rating-hearts" style="--symbol-color-active: #ff4136;"></sl-rating>
@@ -33,13 +23,13 @@
             </div>
             </div>
             <div class="card-body">
-                <a href="/article/{{ todo.id }}" style="color:black; text-decoration: none;">{{ todo.zhaiyao | safe }}</a>
+                <a href="/article/{{ todo.item.id }}" style="color:black; text-decoration: none;">{{ todo.item.zhaiyao | safe }}</a>
             </div>
             
             <div class="card-footer">
             <!-- <button class="btn btn-primary">...</button> -->
-            <a href="/editcontent/{{ todo.id }}" class="btn btn-sm btn-link">编辑</a>
-            <a href="/deletecontent?id={{ todo.id }}" class="btn btn-sm btn-link">删除</a>
+            <a href="/editcontent/{{ todo.item.id }}" class="btn btn-sm btn-link">编辑</a>
+            <a href="/deletecontent?id={{ todo.item.id }}" class="btn btn-sm btn-link">删除</a>
             </div>
         </div>
     </div>

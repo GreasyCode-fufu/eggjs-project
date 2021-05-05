@@ -1,7 +1,7 @@
 'use strict';
 
 const Controller = require('egg').Controller;
-
+const Fuse = require('fuse.js');
 class ContentController extends Controller {
   async index() {
     const { ctx } = this;
@@ -57,6 +57,61 @@ class ContentController extends Controller {
         count
     });
 }
+
+    async search(){
+        const {ctx} = this;
+        let search = ctx.request.body.search;
+        const item = await this.ctx.service.content.getCategorys();
+        // console.log(item);
+        const fuse = new Fuse(item, {
+            keys: ['title', 'biaoqian', 'zhaiyao']
+          })
+
+        let result = fuse.search(search);
+        // console.log(fuse.search(search));
+        // console.log(fuse.search(search).length);
+        let count = fuse.search(search).length;
+        let limit       = 4;
+        let pages       = Math.ceil(count / limit);
+        if (pages < 1) {
+            pages       = 1;
+        }
+        let page        = parseInt(this.ctx.request.query.page);
+        if (isNaN(page) || page < 1) {
+            page        = 1;
+        }
+        if (page > pages) {
+            page        = pages;
+        }
+        let offset      = (page - 1) * limit;
+        let start       = 1;
+        let stop        = pages;
+        if (pages > 5) {
+            start       = page - 2;
+            stop        = page + 2;
+            if (start < 1) {
+                stop        += 1 - start;
+                start       = 1;
+            }
+            if (start > pages) {
+                start       -= stop - pages;
+                stop        = pages;
+            }
+        }
+
+        await this.ctx.render('todo/searchResult.html',{
+            result,
+            page,
+            start,
+            stop,
+            pages,
+            limit,
+            count
+        });
+
+
+        
+    }
 
 }
 
