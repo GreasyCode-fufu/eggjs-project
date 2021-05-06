@@ -1,7 +1,17 @@
 {% extends "purebackstage.html" %}
 
 {% block main%}
+
+<div style="width:400px; margin: 50px auto; margin-top: -20px;">
+    <form action="/search" method="POST">
+      <div class="input-group">
+        <input type="text" class="form-input" placeholder="搜索文章" name="search">
+        <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
+      </div>
+    </form>
+</div>
 <div class="row">
+    
 {% for todo in categorys%}
     <div class="col-sm-3 my-2">
         <div class="card">

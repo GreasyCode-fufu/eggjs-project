@@ -39,11 +39,12 @@ module.exports = app => {
   router.post('/edituser/:userid', controller.editUser.edituser);   //提交
   router.get('/gender', controller.gender.index);       //获取性别可视化图
   router.get('/detailUser', controller.detailUser.index);   //获取用户详细信息表
-  router.get('/search', controller.content.search);
+  router.get('/search', controller.content.searchList);
   router.post('/search', controller.content.search);        //搜索文章
   router.get('/game', controller.game.index);   //娱乐界面
-  router.get('/dictionary', controller.dictionary.index);
-  router.post('/dictionary', controller.dictionary.ci);
+  router.get('/dictionary', controller.dictionary.ciList); //辞典分页
+  router.post('/dictionary', controller.dictionary.ci);   //辞典信息如数据表
+  router.get('/indexDictionary', controller.dictionary.index);  //辞典首页
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单

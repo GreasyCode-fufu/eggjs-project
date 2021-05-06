@@ -43,6 +43,10 @@ class ContentService extends Service {
     });
   }
 
+  async getXcontentCount() {
+    return await this.app.mysql.count('xcontent',{});
+  }
+
   async dropxcontent(){
     await this.app.mysql.query('truncate table xcontent');
   }

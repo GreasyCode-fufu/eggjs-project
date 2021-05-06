@@ -60,23 +60,26 @@ class ContentController extends Controller {
 }
 
     async search(){
-        const {ctx} = this;
-        await this.ctx.service.content.dropxcontent();  //清空数据库
-        let search = ctx.request.body.search;
-        const item = await this.ctx.service.content.getCategorys();
-        // console.log(item);
-        const fuse = new Fuse(item, {
-            keys: ['title', 'biaoqian', 'zhaiyao']
-          })
+        if (this.ctx.request.method === 'POST'){
+                const {ctx} = this;
+                await this.ctx.service.content.dropxcontent();  //清空数据库
+                let search = ctx.request.body.search;
+                const item = await this.ctx.service.content.getCategorys();
+                // console.log(item);
+                const fuse = new Fuse(item, {
+                    keys: ['title', 'biaoqian', 'zhaiyao']
+                })
 
-        let result = fuse.search(search);
+                let result = fuse.search(search);
+                
+                await this.ctx.service.content.insertXcontent(result);
+                this.ctx.redirect('/search');
+            }
+    }
         
-        await this.ctx.service.content.insertXcontent(result);
-        
-        // console.log(fuse.search(search));
-        // console.log(fuse.search(search).length);
-        let count = fuse.search(search).length;
-        let limit       = 8;
+    async searchList(){
+        let count = await this.ctx.service.content.getXcontentCount();
+        let limit       = 4;
         let pages       = Math.ceil(count / limit);
         if (pages < 1) {
             pages       = 1;
@@ -104,7 +107,7 @@ class ContentController extends Controller {
             }
         }
         let categorys    = await this.ctx.service.content.getXcontents(offset,limit);
-        console.log(categorys);
+        // console.log(categorys);
         await this.ctx.render('todo/searchResult.html',{
             categorys,
             page,
