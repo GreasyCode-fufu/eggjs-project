@@ -47,6 +47,7 @@ class ContentController extends Controller {
         }
     }
     let categorys    = await this.ctx.service.content.getCategorys(offset,limit);
+    // console.log(categorys);
     await this.ctx.render('todo/content.html',{
         categorys,
         page,
@@ -60,6 +61,7 @@ class ContentController extends Controller {
 
     async search(){
         const {ctx} = this;
+        await this.ctx.service.content.dropxcontent();  //清空数据库
         let search = ctx.request.body.search;
         const item = await this.ctx.service.content.getCategorys();
         // console.log(item);
@@ -68,10 +70,13 @@ class ContentController extends Controller {
           })
 
         let result = fuse.search(search);
+        
+        await this.ctx.service.content.insertXcontent(result);
+        
         // console.log(fuse.search(search));
         // console.log(fuse.search(search).length);
         let count = fuse.search(search).length;
-        let limit       = 4;
+        let limit       = 8;
         let pages       = Math.ceil(count / limit);
         if (pages < 1) {
             pages       = 1;
@@ -98,9 +103,10 @@ class ContentController extends Controller {
                 stop        = pages;
             }
         }
-
+        let categorys    = await this.ctx.service.content.getXcontents(offset,limit);
+        console.log(categorys);
         await this.ctx.render('todo/searchResult.html',{
-            result,
+            categorys,
             page,
             start,
             stop,

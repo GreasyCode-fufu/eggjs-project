@@ -39,8 +39,11 @@ module.exports = app => {
   router.post('/edituser/:userid', controller.editUser.edituser);   //提交
   router.get('/gender', controller.gender.index);       //获取性别可视化图
   router.get('/detailUser', controller.detailUser.index);   //获取用户详细信息表
+  router.get('/search', controller.content.search);
   router.post('/search', controller.content.search);        //搜索文章
-  router.get('/game', controller.game.index);
+  router.get('/game', controller.game.index);   //娱乐界面
+  router.get('/dictionary', controller.dictionary.index);
+  router.post('/dictionary', controller.dictionary.ci);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单
@@ -49,6 +52,7 @@ module.exports = app => {
   router.post('/editcontent/:id', controller.todo.editcontent);   //提交
   router.get('/content', controller.content.list);          //获取各文章显示界面
   router.get('/deletecontent', controller.todo.deletecontent);    //删除文章
+  
   
   // 图片上传
   router.post('/upload',controller.upload.upload);    //上传图片

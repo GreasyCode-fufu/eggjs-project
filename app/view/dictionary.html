@@ -1,0 +1,30 @@
+{% extends "purebackstage.html" %}
+
+{% block main%}
+
+<div style="width:400px; margin: 50px auto; margin-top: -20px;">
+    <img src="../public/img/logo.png" style="width:120px; height:120px;margin-left: 100px; margin-bottom: 10px;">
+    <form action="/dictionary" method="POST">
+      <div class="input-group">
+        <input type="text" class="form-input" placeholder="搜索" name="search">
+        <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
+      </div>
+    </form>
+</div>
+
+<sl-card class="card-basic" >
+    This is just a basic card. No image, no header, and no footer. Just your content.
+    
+</sl-card>
+
+
+{% endblock %}
+
+{% block script %}
+<style>
+    .card-basic {
+      max-width: auto;
+      
+    }
+  </style>
+{% endblock %}
