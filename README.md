@@ -33,5 +33,3 @@ $ npm stop
 
 ---
 
-### 功能流程图
-<img src="./app/public/img/workflow.jpg" alt="功能流程图"  />
