@@ -35,4 +35,4 @@ $ npm stop
 
 ### 功能流程图
 
-![](C:\Users\86155\dengchang\eggproject\app\public\img\workflow.jpg)
+<img src="C:\Users\86155\dengchang\eggproject\app\public\img\workflow.jpg" alt="图片" style="zoom:200%;" />
