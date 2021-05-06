@@ -40,6 +40,7 @@ module.exports = app => {
   router.get('/gender', controller.gender.index);       //获取性别可视化图
   router.get('/detailUser', controller.detailUser.index);   //获取用户详细信息表
   router.post('/search', controller.content.search);        //搜索文章
+  router.get('/game', controller.game.index);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单

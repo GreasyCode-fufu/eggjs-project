@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="../public/css/admin.css" />
 
 
-  {% block style%}{% endblock%}
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/themes/base.css">
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.39/dist/shoelace.js"></script>
 
@@ -36,43 +36,9 @@
       quickbars_insert_toolbar: 'quickimage quicktable',
     });
   </script>
-
-<!-- <script>
-  window.Papercups = {
-    config: {
-      accountId: "4120babd-d351-4269-99d7-7fefb770b9df",
-      title: "孙福祥泥沙服务集团",
-      subtitle: "您可以咨询一切您有疑问的问题😊",
-      primaryColor: "#9900ef",
-      greeting: "您好，很高兴为您服务😊",
-      awayMessage: "抱歉，客服有点忙！🐇",
-      newMessagePlaceholder: "Start typing...",
-      showAgentAvailability: false,
-      agentAvailableText: "客服在线",
-      agentUnavailableText: "客服在线",
-      requireEmailUpfront: false,
-      iconVariant: "outlined",
-      baseUrl: "https://app.papercups.io",
-      // Optionally include data about your customer here to identify them
-      // customer: {
-      //   name: __CUSTOMER__.name,
-      //   email: __CUSTOMER__.email,
-      //   external_id: __CUSTOMER__.id,
-      //   metadata: {
-      //     plan: "premium"
-      //   }
-      // }
-    },
-  };
-  </script>
-      <script
-      type="text/javascript"
-      async
-      defer
-      src="https://app.papercups.io/widget.js"
-      ></script> -->
-
+  {% block style%} {% endblock%}
   <script src="https://unpkg.com/rough-viz@1.0.6"></script>
+  
 </head>
 
 <body>
@@ -98,8 +64,8 @@
           </a>
           <a href="/contents" class="list-group-item list-group-item-action py-2 ripple"><i
               class="fas fa-chart-bar fa-fw me-3"></i><span>内容管理</span></a>
-          <a href="/deleteuser" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-globe fa-fw me-3"></i><span>网络</span></a>
+          <a href="/game" class="list-group-item list-group-item-action py-2 ripple"><i
+              class="fas fa-globe fa-fw me-3"></i><span>娱乐</span></a>
           <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
               class="fas fa-building fa-fw me-3"></i><span>Partners</span></a>
           <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
