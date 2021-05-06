@@ -31,4 +31,9 @@ $ npm stop
 
 [egg]: https://eggjs.org
 
+<<<<<<< HEAD
 ---
+=======
+---
+
+>>>>>>> 2db4ad4c9168445b510a458f9baeffa509eec59c
