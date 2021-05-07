@@ -1,0 +1,87 @@
+{% extends "purebackstage.html" %}
+
+{% block main%}
+
+<div style="width:400px; margin: 50px auto; margin-top: -20px;">
+    <img src="../public/img/logo.png" style="width:120px; height:120px;margin-left: 100px; margin-bottom: 10px;">
+    <form action="/xiehouyu" method="POST">
+      <div class="input-group">
+        <input type="text" class="form-input" placeholder="搜索" name="search">
+        <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
+      </div>
+    </form>
+</div>
+{% for todo in categorys%}
+        <div>
+
+            <p style="margin: 0;"><span style="font-weight: bold;">谜面：</span>{{todo.riddle}}</p> 
+            <p style="margin: 0;"><span style="font-weight: bold;">谜底：</span>{{todo.answer}}</p> 
+            <hr>  
+        </div>
+{% endfor %}
+
+<div>
+  <ul class="pagination justify-content-center mt-5">
+    {% if page === 1%}
+    <li class="page-item disabled">
+        <span class="page-link">首页</span>
+    </li>
+    <li class="page-item disabled">
+        <span class="page-link">上一页</span>
+    </li>
+    {%else%}
+    <li class="page-item">
+        <a href="/xiehouyu?page=1"class="page-link">首页</a>
+    </li>
+    <li class="page-item">
+        <a href="/xiehouyu?page={{ page - 1 }}"class="page-link">上一页</a>
+    </li>
+    {% endif %}
+    {% if start > 1 %}
+    <li class="page-item disabled">
+        <span class="page-link"> &middot;&middot;&middot;</span>
+    </li>
+    {% endif %}
+    {% for i in range(start,stop + 1) %}
+        {% if page === i %}
+        <li class="page-item active">
+            <span class="page-link">{{ i }}</span>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a href="/xiehouyu?page={{ i }}"class="page-link">{{ i }}</a>
+        </li>
+        {% endif %}
+    {% endfor %}
+    {% if stop < pages %}
+    <li class="page-item disabled">
+        <span class="page-link">&middot;&middot;&middot;</span>
+    </li>
+    {% endif %}
+    {% if page === pages %}
+    <li class="page-item disabled">
+        <span class="page-link">下一页</span>
+    </li>
+    <li class="page-item disabled">
+        <span class="page-link">末页</span>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a href="/xiehouyu?page={{ page + 1 }}" class="page-link">下一页</a>
+    </li>
+    <li class="page-item">
+        <a href="/xiehouyu?page={{ pages }}" class="page-link">末页</a>
+    </li>
+    {% endif %}
+    <li class="page-item disabled">
+        <span class="page-link">{{ limit }}条/页</span>
+    </li>
+    <li class="page-item disabled">
+        <span class="page-link">共{{ count }}条</span>
+    </li>
+</ul>
+</div>
+</div>
+
+{% endblock %}
+

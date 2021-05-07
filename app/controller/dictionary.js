@@ -26,7 +26,7 @@ class DictionaryController extends Controller {
   async xiehouyuIndex(){
     const { ctx } = this;
     let placeholder = "歇后语";
-    await ctx.render('dictionaryIndex', {placeholder});
+    await ctx.render('xiehouyuIndex', {placeholder});
   }
 
   async ci(){
@@ -146,6 +146,71 @@ class DictionaryController extends Controller {
     let categorys    = await this.ctx.service.dictionary.getIdiom(offset,limit);
     // console.log(categorys);
     await this.ctx.render('idiom.html',{
+        categorys,
+        page,
+        start,
+        stop,
+        pages,
+        limit,
+        count
+    });
+
+  }
+
+
+  async xiehouyu(){
+    if (this.ctx.request.method === 'POST'){
+      const {ctx} = this;
+      let search = ctx.request.body.search;
+      await this.ctx.service.dictionary.dropXiehouyu();
+      const data = fs.readFileSync('./app/data/json/xiehouyu.json');
+      let res = data.toString();
+      const list = JSON.parse(res);
+      // console.log(userList);
+      const fuse = new Fuse(list, {
+        keys: ['riddle']
+      });
+      // console.log(fuse.search('玉波'));
+
+      let result = fuse.search(search);
+      await this.ctx.service.dictionary.insertXiehouyu(result);
+      this.ctx.redirect('/xiehouyu');
+    }
+
+  }
+
+  async xiehouyuList(){
+    let count = await this.ctx.service.dictionary.getXiehouyuCount();
+    let limit       = 5;
+    let pages       = Math.ceil(count / limit);
+    if (pages < 1) {
+        pages       = 1;
+    }
+    let page        = parseInt(this.ctx.request.query.page);
+    if (isNaN(page) || page < 1) {
+        page        = 1;
+    }
+    if (page > pages) {
+        page        = pages;
+    }
+    let offset      = (page - 1) * limit;
+    let start       = 1;
+    let stop        = pages;
+    if (pages > 5) {
+        start       = page - 2;
+        stop        = page + 2;
+        if (start < 1) {
+            stop        += 1 - start;
+            start       = 1;
+        }
+        if (start > pages) {
+            start       -= stop - pages;
+            stop        = pages;
+        }
+    }
+    let categorys    = await this.ctx.service.dictionary.getXiehouyu(offset,limit);
+    // console.log(categorys);
+    await this.ctx.render('xiehouyu.html',{
         categorys,
         page,
         start,

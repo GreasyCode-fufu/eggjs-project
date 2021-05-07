@@ -19,6 +19,14 @@ class DictionaryService extends Service {
         
   }
 
+  async insertXiehouyu(result) {
+      
+    for(let i=0; result.length - i> 0; i = i + 1 ){
+        await this.app.mysql.insert('xiehouyu', result[(result.length - (result.length-1) + i - 1)].item);
+    }
+        
+  }
+
   async getCi(offset,limit){
     return await this.app.mysql.select('ci',{
         // orders:[['id','desc']],
@@ -35,6 +43,14 @@ class DictionaryService extends Service {
     });
   }
 
+  async getXiehouyu(offset,limit){
+    return await this.app.mysql.select('xiehouyu',{
+        // orders:[['id','desc']],
+        offset,
+        limit,
+    });
+  }
+
   async getCiCount() {
     return await this.app.mysql.count('ci',{});
   }
@@ -43,12 +59,20 @@ class DictionaryService extends Service {
     return await this.app.mysql.count('idiom',{});
   }
 
+  async getXiehouyuCount() {
+    return await this.app.mysql.count('xiehouyu',{});
+  }
+
   async dropCi(){
     await this.app.mysql.query('truncate table ci');
   }
 
   async dropIdiom(){
     await this.app.mysql.query('truncate table idiom');
+  }
+
+  async dropXiehouyu(){
+    await this.app.mysql.query('truncate table xiehouyu');
   }
 
 }

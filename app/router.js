@@ -50,6 +50,8 @@ module.exports = app => {
   router.get('/xiehouyuIndex', controller.dictionary.xiehouyuIndex);   //歇后语首页
   router.post('/idiom', controller.dictionary.idiom);
   router.get('/idiom', controller.dictionary.idiomList);
+  router.post('/xiehouyu', controller.dictionary.xiehouyu);
+  router.get('/xiehouyu', controller.dictionary.xiehouyuList);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单
