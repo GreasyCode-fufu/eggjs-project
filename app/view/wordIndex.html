@@ -1,0 +1,24 @@
+{% extends "purebackstage.html" %}
+
+{% block main%}
+
+<div style="width:400px; margin: 50px auto; margin-top: 20px;">
+    <img src="../public/img/logo.png" style="width:120px; height:120px;margin-left: 100px; margin-bottom: 10px;">
+    <form action="/word" method="POST">
+      <div class="input-group">
+        <input type="text" class="form-input" placeholder="{{placeholder}}" name="search">
+        <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
+      </div>
+    </form>
+</div>
+
+<div style="width:400px; margin: 50px auto; margin-top: 150px; margin-left: 450px;">
+    <sl-button-group>
+      <sl-button size="small" href="/indexDictionary" pill>词语</sl-button>
+      <sl-button size="small" href="/idiomIndex" pill>成语</sl-button>
+      <sl-button size="small" href="/wordIndex" pill>汉字</sl-button>
+      <sl-button size="small" href="/xiehouyuIndex" pill>歇后语</sl-button>
+    </sl-button-group>
+</div>
+
+{% endblock %}

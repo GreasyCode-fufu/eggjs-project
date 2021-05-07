@@ -27,6 +27,14 @@ class DictionaryService extends Service {
         
   }
 
+  async insertWord(result) {
+      
+    for(let i=0; result.length - i> 0; i = i + 1 ){
+        await this.app.mysql.insert('word', result[(result.length - (result.length-1) + i - 1)].item);
+    }
+        
+  }
+
   async getCi(offset,limit){
     return await this.app.mysql.select('ci',{
         // orders:[['id','desc']],
@@ -51,6 +59,14 @@ class DictionaryService extends Service {
     });
   }
 
+  async getWord(offset,limit){
+    return await this.app.mysql.select('word',{
+        // orders:[['id','desc']],
+        offset,
+        limit,
+    });
+  }
+
   async getCiCount() {
     return await this.app.mysql.count('ci',{});
   }
@@ -63,6 +79,10 @@ class DictionaryService extends Service {
     return await this.app.mysql.count('xiehouyu',{});
   }
 
+  async wordCount() {
+    return await this.app.mysql.count('word',{});
+  }
+
   async dropCi(){
     await this.app.mysql.query('truncate table ci');
   }
@@ -73,6 +93,10 @@ class DictionaryService extends Service {
 
   async dropXiehouyu(){
     await this.app.mysql.query('truncate table xiehouyu');
+  }
+
+  async dropWord(){
+    await this.app.mysql.query('truncate table word');
   }
 
 }

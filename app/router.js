@@ -52,6 +52,8 @@ module.exports = app => {
   router.get('/idiom', controller.dictionary.idiomList);
   router.post('/xiehouyu', controller.dictionary.xiehouyu);
   router.get('/xiehouyu', controller.dictionary.xiehouyuList);
+  router.post('/word', controller.dictionary.word);
+  router.get('/word', controller.dictionary.wordList);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单

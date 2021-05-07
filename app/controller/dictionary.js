@@ -20,7 +20,7 @@ class DictionaryController extends Controller {
   async wordIndex(){
     const { ctx } = this;
     let placeholder = "汉字";
-    await ctx.render('dictionaryIndex', {placeholder});
+    await ctx.render('wordIndex', {placeholder});
   }
 
   async xiehouyuIndex(){
@@ -211,6 +211,72 @@ class DictionaryController extends Controller {
     let categorys    = await this.ctx.service.dictionary.getXiehouyu(offset,limit);
     // console.log(categorys);
     await this.ctx.render('xiehouyu.html',{
+        categorys,
+        page,
+        start,
+        stop,
+        pages,
+        limit,
+        count
+    });
+
+  }
+
+
+  async word(){
+    if (this.ctx.request.method === 'POST'){
+      const {ctx} = this;
+      let search = ctx.request.body.search;
+      await this.ctx.service.dictionary.dropWord();
+      const data = fs.readFileSync('./app/data/json/word.json');
+      let res = data.toString();
+      const list = JSON.parse(res);
+      // console.log(userList);
+      const fuse = new Fuse(list, {
+        keys: ['word']
+      });
+      // console.log(fuse.search('玉波'));
+
+      let result = fuse.search(search);
+      await this.ctx.service.dictionary.insertWord(result);
+      this.ctx.redirect('/word');
+    }
+
+  }
+
+
+  async wordList(){
+    let count = await this.ctx.service.dictionary.wordCount();
+    let limit       = 1;
+    let pages       = Math.ceil(count / limit);
+    if (pages < 1) {
+        pages       = 1;
+    }
+    let page        = parseInt(this.ctx.request.query.page);
+    if (isNaN(page) || page < 1) {
+        page        = 1;
+    }
+    if (page > pages) {
+        page        = pages;
+    }
+    let offset      = (page - 1) * limit;
+    let start       = 1;
+    let stop        = pages;
+    if (pages > 5) {
+        start       = page - 2;
+        stop        = page + 2;
+        if (start < 1) {
+            stop        += 1 - start;
+            start       = 1;
+        }
+        if (start > pages) {
+            start       -= stop - pages;
+            stop        = pages;
+        }
+    }
+    let categorys    = await this.ctx.service.dictionary.getWord(offset,limit);
+    // console.log(categorys);
+    await this.ctx.render('word.html',{
         categorys,
         page,
         start,
