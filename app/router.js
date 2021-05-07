@@ -45,6 +45,11 @@ module.exports = app => {
   router.get('/dictionary', controller.dictionary.ciList); //辞典分页
   router.post('/dictionary', controller.dictionary.ci);   //辞典信息如数据表
   router.get('/indexDictionary', controller.dictionary.index);  //辞典首页
+  router.get('/idiomIndex', controller.dictionary.idiomIndex);  //成语首页
+  router.get('/wordIndex', controller.dictionary.wordIndex);   //汉字首页
+  router.get('/xiehouyuIndex', controller.dictionary.xiehouyuIndex);   //歇后语首页
+  router.post('/idiom', controller.dictionary.idiom);
+  router.get('/idiom', controller.dictionary.idiomList);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单

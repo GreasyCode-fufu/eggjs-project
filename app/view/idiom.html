@@ -4,7 +4,7 @@
 
 <div style="width:400px; margin: 50px auto; margin-top: -20px;">
     <img src="../public/img/logo.png" style="width:120px; height:120px;margin-left: 100px; margin-bottom: 10px;">
-    <form action="/dictionary" method="POST">
+    <form action="/idiom" method="POST">
       <div class="input-group">
         <input type="text" class="form-input" placeholder="搜索" name="search">
         <button class="btn btn-primary input-group-btn">搜&nbsp;索</button>
@@ -12,12 +12,20 @@
     </form>
 </div>
 {% for todo in categorys%}
-        <div>
-
-            <p style="margin: 0;"><span style="font-weight: bold;">词语：</span>{{todo.ci}}</p> 
-            <p style="margin: 0;"><span style="font-weight: bold;">释义：</span>{{todo.explanation}}</p> 
-            <hr>  
-        </div>
+<div>
+<!-- <sl-card class="card-basic" > -->
+    <!-- This is just a basic card. No image, no header, and no footer. Just your content. -->
+    <p style="margin: 0;"><span style="font-weight: bold;">成语：</span>{{todo.word}}</p> 
+    <p style="margin: 0;"><span style="font-weight: bold;">拼音：</span>{{todo.pinyin}}</p> 
+    <p style="margin: 0;"><span style="font-weight: bold;">解释：</span>{{todo.explanation}}</p> 
+    <p style="margin: 0;"><span style="font-weight: bold;">出处：</span>{{todo.derivation}}</p> 
+    <p style="margin: 0;"><span style="font-weight: bold;">举例：</span>{{todo.example}}</p> 
+    
+    <hr>
+   
+    
+<!-- </sl-card> -->
+</div>
 {% endfor %}
 
 <div>
@@ -31,10 +39,10 @@
     </li>
     {%else%}
     <li class="page-item">
-        <a href="/dictionary?page=1"class="page-link">首页</a>
+        <a href="/idiom?page=1"class="page-link">首页</a>
     </li>
     <li class="page-item">
-        <a href="/dictionary?page={{ page - 1 }}"class="page-link">上一页</a>
+        <a href="/idiom?page={{ page - 1 }}"class="page-link">上一页</a>
     </li>
     {% endif %}
     {% if start > 1 %}
@@ -49,7 +57,7 @@
         </li>
         {% else %}
         <li class="page-item">
-            <a href="/dictionary?page={{ i }}"class="page-link">{{ i }}</a>
+            <a href="/idiom?page={{ i }}"class="page-link">{{ i }}</a>
         </li>
         {% endif %}
     {% endfor %}
@@ -67,10 +75,10 @@
     </li>
     {% else %}
     <li class="page-item">
-        <a href="/dictionary?page={{ page + 1 }}" class="page-link">下一页</a>
+        <a href="/idiom?page={{ page + 1 }}" class="page-link">下一页</a>
     </li>
     <li class="page-item">
-        <a href="/dictionary?page={{ pages }}" class="page-link">末页</a>
+        <a href="/idiom?page={{ pages }}" class="page-link">末页</a>
     </li>
     {% endif %}
     <li class="page-item disabled">
