@@ -16,6 +16,7 @@ module.exports = app => {
   router.get('/register', controller.register.index);     //获取注册页面
   router.post('/register', controller.register.adduser);    //注册提交
   router.post('/resetpassword', controller.resetpassword.index);    //重置密码提交
+  //---------------------------------------------------
   router.get('/usertable', controller.usertable.usertable);   //获取用户表界面
   router.get('/indexbackstage', controller.backstage.index);    //获取后台首页
   router.get('/deleteuser', controller.deleteuser.deleteuser);    //未知（估计没用）
@@ -42,6 +43,8 @@ module.exports = app => {
   router.get('/search', controller.content.searchList);
   router.post('/search', controller.content.search);        //搜索文章
   router.get('/game', controller.game.index);   //娱乐界面
+  router.get('/english', controller.backstage.english);
+  //-----------------------------------------------------
   router.get('/dictionary', controller.dictionary.ciList); //辞典分页
   router.post('/dictionary', controller.dictionary.ci);   //辞典信息如数据表
   router.get('/indexDictionary', controller.dictionary.index);  //辞典首页
@@ -54,8 +57,22 @@ module.exports = app => {
   router.get('/xiehouyu', controller.dictionary.xiehouyuList);
   router.post('/word', controller.dictionary.word);
   router.get('/word', controller.dictionary.wordList);
+  //-------------------------------------------------------------
   router.get('/Pagexiehouyu',controller.test.Pagexiehouyu);
+  router.get('/Pageci',controller.test.Pageci);
+  router.get('/Pageword',controller.test.Pageword);
+  router.get('/Pageidiom',controller.test.Pageidiom);
+  router.post('/Pagecontent',controller.test.Pagecontent);
+  router.get('/Pagecontent',controller.test.PagecontentList);
+
+
+  //-------------------------------------------------------------
   router.get('/PagexiehouyuIndex', controller.test.getXiehouyu);
+  router.get('/PagewordIndex', controller.test.getWord);
+  router.get('/PageciIndex', controller.test.getCi);
+  router.get('/PageidiomIndex', controller.test.getIdiom);
+  router.get('/PagecontentIndex', controller.test.getContent);
+
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单

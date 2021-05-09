@@ -50,21 +50,21 @@
       <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
           <a href="/indexbackstage" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>首页</span>
+            <i class="fas fa-tachometer-alt fa-fw me-3"></i><br><span>Home</span>
           </a>
           <a href="/usertable" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-lock fa-fw me-3"></i><span>用户管理</span></a>
+              class="fas fa-lock fa-fw me-3"></i><br><span>User Management</span></a>
           <a href="/senior" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-money-bill fa-fw me-3"></i><span>管理员管理</span></a>
+            class="fas fa-money-bill fa-fw me-3"></i><br><span>Administrator Management</span></a>
           <a href="/contents" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-chart-bar fa-fw me-3"></i><span>内容管理</span></a>
+            class="fas fa-chart-bar fa-fw me-3"></i><br><span>Content Management</span></a>
           <a href="/dataVisual" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>数据可视化</span>
+            <i class="fas fa-chart-area fa-fw me-3"></i><br><span>Data Visualization</span>
           </a>
           <a href="/indexDictionary" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-globe fa-fw me-3"></i><span>辞典</span></a>
+            class="fas fa-globe fa-fw me-3"></i><br><span>Dictionary</span></a>
           <a href="/game" class="list-group-item list-group-item-action py-2 ripple"><i
-            class="fas fa-building fa-fw me-3"></i><span>娱乐</span></a>
+            class="fas fa-building fa-fw me-3"></i><br><span>Game</span></a>
          
         </div>
       </div>
@@ -108,7 +108,7 @@
               </li>
               <li>
                 
-                <a class="dropdown-item" href="/english"><i class="united kingdom flag"></i>English</a>
+                <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English</a>
               </li>
               <li>
                 <a class="dropdown-item" href="/poem"><i class="japan flag"></i>日本語</a>
@@ -157,6 +157,7 @@
     <div class="container pt-4">
       {% block main%} {% endblock%}
       {% block table %}{% endblock %}
+      <img src="../public/img/houtai.png" style="background-size: cover; height: 50%; width: 80%">
 
       <div class="modal modal-sm" id="modal-id" style="margin: auto;">
         <div class="modal-container">

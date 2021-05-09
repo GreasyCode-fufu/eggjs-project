@@ -8,6 +8,11 @@ class BackstageController extends Controller {
     await ctx.render('indexbackstage');   //转到后台页面
   }
 
+  async english() {
+    const {ctx}=this;
+    await ctx.render('english');   //转到后台页面
+  }
+
   async input() {
     const {ctx}=this;
     await ctx.render('input');    //没用

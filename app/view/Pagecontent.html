@@ -63,21 +63,26 @@
       text-decoration:none;
       
     }
-
     a:active{
     color:#f9ca24;
     }
 
     a:hover{
     color:blueviolet;
-    background:black;
+    background:#f1f2f6;
 }
 
+    #cardimg{
+        height:9rem;
+        width:10rem
+    }
 
   </style>
 </head>
 <body>
   <div class="main">
+
+    
 
     <div class="button">
       <div class="accordion">
@@ -88,38 +93,69 @@
         </label>
         <div class="accordion-body model">
           <!-- Accordions content -->
+          <a href="/PagexiehouyuIndex"><p>歇后语</p></a>
           <a href="/PageciIndex"><p>词语</p></a>
           <a href="/PageidiomIndex"><p>成语</p></a>
           <a href="/PagewordIndex"><p>汉字</p></a>
           <a href="/PagecontentIndex"><p>内容</p></a>
-          <a href="/PagexiehouyuIndex"><p>歇后语</p></a>
+          <a href="/introduce"><p>退出</p></a>
           
         </div>
       </div>
     </div>
 
       <div class="search">
-        <form action="/Pagexiehouyu" method="get">
+        <form action="/Pagecontent" method="post">
         <img src="../public/img/MUYE.png">
         <div class="input-group">
           <input type="text" class="form-input input-lg" placeholder="搜索" name="search">
           <button class="btn btn-primary input-group-btn btn-lg btn-action"><i class="icon icon-search"></i></button>
         </div>
         </form>
-
-        
-
       </div>
-      <div class="show">
-        {% for todo in categorys%}
-        <div>
+      <div class="container pt-4">
+          <div class="row">
+            {% for todo in categorys%}
 
-            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">谜题：</span>{{todo.item.riddle}}</p> 
-            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">谜底：</span>{{todo.item.answer}}</p> 
-            <hr>  
+            <div class="modal modal-lg" id="modal-id" style="margin: auto;">
+              <a href="#close" class="modal-overlay" aria-label="Close"></a>
+              <div class="modal-container">
+                <div class="modal-header">
+                  <!-- <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a> -->
+                  <button class="btn btn-action  btn-link float-right" id="remove"><i class="icon icon-cross"></i></button>
+                  <!-- <div class="modal-title h5">{{ todo.title }}</div> -->
+                </div>
+                <div class="modal-body">
+                  <div class="content">
+                    <div class="modal-title h4">&nbsp;{{ todo.title }}</div>
+                    <!-- content here -->
+                    {{todo.text | safe }}
+                    <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="height:12rem; width:18rem">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <!-- <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive"> -->
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3 my-2" style="margin: auto;">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="/public/admin/upload/{{ todo.cover }}" class="img-responsive" style="margin: auto;">
+                  </div>
+                  <div class="card-header">
+                    <div class="card-title h5">{{ todo.title }}</div>
+                    <div class="card-subtitle text-gray">{{ todo.biaoqian }}</div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn btn-link" id="delete" style="float:right;">详情</button>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+          </div>
         </div>
-        {% endfor %}
-      </div>
 
       <div id="list">
           <ul class="pagination justify-content-center mt-5">
@@ -132,10 +168,10 @@
             </li>
             {%else%}
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page=1"class="page-link">首页</a>
+                <a href="/Pagecontent?page=1"class="page-link">首页</a>
             </li>
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ page - 1 }}"class="page-link">上一页</a>
+                <a href="/Pagecontent?page={{ page - 1 }}"class="page-link">上一页</a>
             </li>
             {% endif %}
             {% if start > 1 %}
@@ -150,7 +186,7 @@
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a href="/Pagexiehouyu?search={{search}}&page={{ i }}"class="page-link">{{ i }}</a>
+                    <a href="/Pagecontent?page={{ i }}"class="page-link">{{ i }}</a>
                 </li>
                 {% endif %}
             {% endfor %}
@@ -168,10 +204,10 @@
             </li>
             {% else %}
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ page + 1 }}" class="page-link">下一页</a>
+                <a href="/Pagecontent?page={{ page + 1 }}" class="page-link">下一页</a>
             </li>
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ pages }}" class="page-link">末页</a>
+                <a href="/Pagecontent?page={{ pages }}" class="page-link">末页</a>
             </li>
             {% endif %}
             <li class="page-item disabled">
@@ -186,7 +222,22 @@
   </div>
  
 
+  <script>
+    let value = document.getElementById('delete');
+    let modal = document.getElementById('modal-id');
+    let remove = document.getElementById('remove');
+    let cancal = document.getElementById('cancal');
+    value.addEventListener('click' ,() => {
+        modal.classList.add('active');
+    });
+    remove.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+    cancal.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
 
+  </script>
 
 </body>
 </html>

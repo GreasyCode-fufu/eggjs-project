@@ -88,18 +88,19 @@
         </label>
         <div class="accordion-body model">
           <!-- Accordions content -->
+          <a href="/PagexiehouyuIndex"><p>歇后语</p></a>
           <a href="/PageciIndex"><p>词语</p></a>
           <a href="/PageidiomIndex"><p>成语</p></a>
           <a href="/PagewordIndex"><p>汉字</p></a>
           <a href="/PagecontentIndex"><p>内容</p></a>
-          <a href="/PagexiehouyuIndex"><p>歇后语</p></a>
+          <a href="/introduce"><p>退出</p></a>
           
         </div>
       </div>
     </div>
 
       <div class="search">
-        <form action="/Pagexiehouyu" method="get">
+        <form action="/Pageci" method="get">
         <img src="../public/img/MUYE.png">
         <div class="input-group">
           <input type="text" class="form-input input-lg" placeholder="搜索" name="search">
@@ -114,8 +115,8 @@
         {% for todo in categorys%}
         <div>
 
-            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">谜题：</span>{{todo.item.riddle}}</p> 
-            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">谜底：</span>{{todo.item.answer}}</p> 
+            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">词语：</span>{{todo.item.ci}}</p> 
+            <p style="margin: 0; font-size: 1rem;" class="lang-zh-hans"><span style="font-weight: bold;">解释：</span>{{todo.item.explanation}}</p> 
             <hr>  
         </div>
         {% endfor %}
@@ -132,10 +133,10 @@
             </li>
             {%else%}
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page=1"class="page-link">首页</a>
+                <a href="/Pageci?search={{search}}&page=1"class="page-link">首页</a>
             </li>
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ page - 1 }}"class="page-link">上一页</a>
+                <a href="/Pageci?search={{search}}&page={{ page - 1 }}"class="page-link">上一页</a>
             </li>
             {% endif %}
             {% if start > 1 %}
@@ -150,7 +151,7 @@
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a href="/Pagexiehouyu?search={{search}}&page={{ i }}"class="page-link">{{ i }}</a>
+                    <a href="/Pageci?search={{search}}&page={{ i }}"class="page-link">{{ i }}</a>
                 </li>
                 {% endif %}
             {% endfor %}
@@ -168,10 +169,10 @@
             </li>
             {% else %}
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ page + 1 }}" class="page-link">下一页</a>
+                <a href="/Pageci?search={{search}}&page={{ page + 1 }}" class="page-link">下一页</a>
             </li>
             <li class="page-item">
-                <a href="/Pagexiehouyu?search={{search}}&page={{ pages }}" class="page-link">末页</a>
+                <a href="/Pageci?search={{search}}&page={{ pages }}" class="page-link">末页</a>
             </li>
             {% endif %}
             <li class="page-item disabled">
