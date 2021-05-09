@@ -54,6 +54,8 @@ module.exports = app => {
   router.get('/xiehouyu', controller.dictionary.xiehouyuList);
   router.post('/word', controller.dictionary.word);
   router.get('/word', controller.dictionary.wordList);
+  router.get('/Pagexiehouyu',controller.test.Pagexiehouyu);
+  router.get('/PagexiehouyuIndex', controller.test.getXiehouyu);
 
   // 内容增删改查
   router.get('/addcontent', controller.todo.addcontent);    //获取添加文章表单
