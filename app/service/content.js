@@ -2,12 +2,12 @@
 
 const Service = require('egg').Service;
 
-class ContentService extends Service {
+class ContentService extends Service {    //获取文章数量
   async getCategorysCount() {
     return await this.app.mysql.count('content',{});
   }
 
-  async getCategorys(offset,limit){
+  async getCategorys(offset,limit){       //查询文章，offset，limit限制
     return await this.app.mysql.select('content',{
         orders:[['id','desc']],
         offset,
@@ -16,26 +16,16 @@ class ContentService extends Service {
   }
 
    async insertXcontent(result){
-    console.log("---------------------------");
-    // console.log(result.length);              //这里调试痕迹我舍不得删
-    //  console.log(result[0].item);
-      for(let i=0; result.length - i> 0; i = i + 1 ){
-        // await this.app.mysql.insert('xcontent', result[0].item);
-        // console.log(result.length - (result.length-1) + i - 1);
-        await this.app.mysql.insert('xcontent', result[(result.length - (result.length-1) + i - 1)].item);
+      for(let i=0; result.length - i> 0; i = i + 1 ){     //循环输出数组内对象
 
-        
+        await this.app.mysql.insert('xcontent', result[(result.length - (result.length-1) + i - 1)].item);    
+                                                        
+                                                          //将输出内容反序插入‘xcontent’表
       }
-    // for(let item in result){
-      // console.log(item);
-      // await this.app.mysql.insert('xcontent', result[0].item);
-    // }
-      // await this.app.mysql.insert('xcontent', result.item);
-      console.log("---------------------------");
   }
 
    
-  async getXcontents(offset,limit){
+  async getXcontents(offset,limit){                        //获取'xcontent'表内数据
     return await this.app.mysql.select('xcontent',{
         // orders:[['id','desc']],
         offset,
@@ -43,12 +33,12 @@ class ContentService extends Service {
     });
   }
 
-  async getXcontentCount() {
+  async getXcontentCount() {                               //统计‘xcontent’数据数量
     return await this.app.mysql.count('xcontent',{});
   }
 
   async dropxcontent(){
-    await this.app.mysql.query('truncate table xcontent');
+    await this.app.mysql.query('truncate table xcontent');  //删除表中数据
   }
 
 }

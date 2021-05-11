@@ -8,35 +8,35 @@ class TestController extends Controller {
 
   async getXiehouyu() {
       const { ctx } = this;
-     await ctx.render('xiehouyuPage');    
+     await ctx.render('xiehouyuPage');    //转到歇后语界面
       }
 
   async getWord() {
       const { ctx } = this;
-     await ctx.render('wordPage');   
+     await ctx.render('wordPage');       //转到汉字界面
       }
 
   async getCi() {
       const { ctx } = this;
-      await ctx.render('ciPage');   
+      await ctx.render('ciPage');        //转到词语界面
       }  
 
   async getContent() {
       const { ctx } = this;
-      await ctx.render('contentPage');   
+      await ctx.render('contentPage');   //转到文章页面 
       } 
 
   async getIdiom() {
       const { ctx } = this;
-      await ctx.render('idiomPage');   
+      await ctx.render('idiomPage');    //转到成语页面
       } 
 
 //----------------------------------------------------------------------
  
   async Pagexiehouyu(){
-          let search = this.ctx.request.query.search;
-          let result = await this.ctx.service.test.Array(search);
-          let count = result.length;
+          let search = this.ctx.request.query.search;              //获取提交内容，get方法
+          let result = await this.ctx.service.test.Array(search);  //转到service在数组内查询
+          let count = result.length;                               //获取数组长度
           let limit       = 5;
           let pages       = Math.ceil(count / limit);
           if (pages < 1) {
@@ -64,9 +64,10 @@ class TestController extends Controller {
                   stop        = pages;
               }
           }
-          var categorys  =new Array();
-          for(let i = offset ; i < offset + limit; ++i){
-              categorys.push(result[i]);
+          var categorys  =new Array();                     //创建categorys数组对象
+          for(let i = offset ; i < offset + limit; ++i){   //for循环实现分页，offset为页面显示第一条信息，limit为页面显示信息数量
+
+              categorys.push(result[i]);                   //将信息入队
 
     }
    
@@ -78,12 +79,12 @@ class TestController extends Controller {
         pages,
         limit,
         count,
-        search
+        search                                              //search变量传入前台页面
     });    
     }
 
     async Pageci(){
-        let search = this.ctx.request.query.search;
+        let search = this.ctx.request.query.search;         //方式和上边一样
         let result = await this.ctx.service.test.ci(search);
         let count = result.length;
         let limit       = 10;
@@ -250,10 +251,7 @@ class TestController extends Controller {
       }
 
             async PagecontentList(){
-                // let search = this.ctx.request.query.search;
-                // let result = await this.ctx.service.test.Array(search);
                 let count = await this.ctx.service.content.getXcontentCount();
-                // let count = result.length;
                 let limit       = 3;
                 let pages       = Math.ceil(count / limit);
                 if (pages < 1) {

@@ -34,8 +34,6 @@ class UsertableController extends Controller {
         await ctx.render('usertable',{sql});
     }
   }
-
-
 }
 
 module.exports = UsertableController;
