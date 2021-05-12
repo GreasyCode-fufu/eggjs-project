@@ -1,0 +1,101 @@
+
+------------------------------------------------
+CREATE TABLE `admin` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `adminName` varchar(20) NOT NULL,
+  `adminPassword` varchar(255) DEFAULT NULL,
+  `submission_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+------------------------------------------------
+
+CREATE TABLE `ci` (
+  `ci` text,
+  `explanation` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-------------------------------------------------
+
+CREATE TABLE `content` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(1024) NOT NULL,
+  `text` text,
+  `cover` varchar(64) DEFAULT NULL,
+  `biaoqian` varchar(512) DEFAULT NULL,
+  `zhaiyao` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+
+------------------------------------------------------
+
+CREATE TABLE `idiom` (
+  `derivation` text,
+  `example` text,
+  `explanation` text,
+  `pinyin` text,
+  `word` text,
+  `abbreviation` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--------------------------------------------------
+
+CREATE TABLE `news` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `title` varchar(16) NOT NULL COMMENT '标题',
+  `contents` mediumtext NOT NULL COMMENT '内容',
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updateTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='测试';
+
+------------------------------------------------
+
+CREATE TABLE `register` (
+  `userid` int(4) NOT NULL AUTO_INCREMENT,
+  `useremail` varchar(32) NOT NULL,
+  `userpassword` varchar(255) NOT NULL,
+  `verify` varchar(160) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+
+------------------------------------------------
+
+CREATE TABLE `userinfo` (
+  `userid` int(4) NOT NULL,
+  `gender` varchar(2) DEFAULT NULL,
+  `age` int(2) DEFAULT NULL,
+  PRIMARY KEY (`userid`),
+  CONSTRAINT `userinfo_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `register` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+----------------------------------------------
+
+CREATE TABLE `word` (
+  `word` text,
+  `oldword` text,
+  `strokes` text,
+  `pinyin` text,
+  `radicals` text,
+  `explanation` text,
+  `more` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--------------------------------------------
+
+CREATE TABLE `xcontent` (
+  `id` int(11) NOT NULL,
+  `title` varchar(1024) NOT NULL,
+  `text` text,
+  `cover` varchar(64) DEFAULT NULL,
+  `biaoqian` varchar(512) DEFAULT NULL,
+  `zhaiyao` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+----------------------------------------
+
+CREATE TABLE `xiehouyu` (
+  `riddle` text,
+  `answer` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
